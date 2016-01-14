@@ -1,74 +1,93 @@
-\documentclass[11pt,a4paper]{article}
+﻿\documentclass[12pt,a4paper]{article}
 \usepackage{listings}
-\usepackage{amssymb}
-\usepackage{amsmath}
+\usepackage{amssymb,amsmath,mathtools,amsthm}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
-\usepackage[margin=0.5in]{geometry}
+\usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
 \usepackage{graphicx}
 \usepackage{listings}
-\allowdisplaybreaks
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{indentfirst}
+\usepackage[colorlinks=true, urlcolor=magenta]{hyperref}
+\usepackage{pgfplots}
+\usepackage{forest}
 
-\title{Лекция по АиСД №2}
-
-\date{\today}
-
-\author{Попов Никита}
-
+\title{Алгоритмы и структуры данных, лекция 2}
+\date{14.01.2016}
+\author{}
 
 \begin{document}
 \maketitle
 
 \section*{Задача сортировки}
-Вход: последовательность чисел (строго говоря, может быть что угодно с полным порядком) $a_1 \ldots a_n$
-Выход: $a_{i_1} \ldots a_{i_n}$, где 
+\textbf{Вход:} последовательность чисел (строго говоря, может быть что угодно с полным порядком) $(a_1, a_2, \ldots, a_n)$.
+
+\textbf{Выход:} $(a_{i_1}, a_{i_2}, \ldots, a_{i_n})$, где $a_{i_k} \leq a_{i_{k+1}}$. Другими словами, на выходе получается отсортированная по возрастанию последовательность. 
 
 Рассмотрим неэффективный алгоритм:
 
-\begin{lstlisting}
-recursive_sort(a)           // (a = [a_1\ldots a_n])
-    n = |a|
-    if n > 1 then
-        recursive_sort(a[1:n-1])
-        k := a_n
-        for i:= n-1 downto 1 do
-            if a_i > k then
-                a_{i+1} = a_i
-            else
-                break
-                a_{i+1}:= k
-\end{lstlisting}
+\begin{algorithm}
+\caption{Неэффективный алгоритм сортировки}
+\begin{algorithmic}[1]
+\Function{recursive\_sort}{$a$}\Comment{$a = (a_1, a_2, \ldots, a_n)$}
+\State $n \mathrel{:=} |a|$
+\If{$n > 1$}
+    \State \textsc{recursive\_sort}($a[1:n-1]$)
+    \State $k \mathrel{:=} a_n$
+    \For{$i \mathrel{:=} n - 1$ downto $1$}
+        \If{$a_i > k$}
+            \State $a_{i+1} \mathrel{:=} a_{i}$
+        \Else
+            \State break
+        \EndIf
+        \State $a_{i+1} \mathrel{:=} k$
+    \EndFor
+\EndIf
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 $[6,8,3,4] \to [3,6,8,4] \xrightarrow{8>4} [3,6,\ ,8] \xrightarrow{6>4}[3,\ ,6,8] \xrightarrow {3<4}[3,4,6,8]$
 
-По сути, мы идём слева направо и каждому элементу находим место среди прошлых уже отсортированных элементов
+По сути, мы идём слева направо и каждому элементу находим место среди прошлых уже отсортированных элементов.
 
-\begin{lstlisting}
-insertion_sort(a)
-    n = |a|
-    for j := 2 to n
-        k:= a_n
-        for i:= j-1 downto 1 do
-            if a_i > k then
-                a_{i+1} = a_i
-            else
-                break
-\end{lstlisting}
+\
+
+Теперь рассмотрим алгоритм \emph{сортировки вставками}.
+
+\begin{algorithm}
+\caption{Алгоритм сортировки вставками}
+\begin{algorithmic}[1]
+\Function{recursive\_sort}{$a$}\Comment{$a = (a_1, a_2, \ldots, a_n)$}
+\State $n \mathrel{:=} |a|$
+\For{$j \mathrel{:=} 2$ to $n$}
+    \State $k \mathrel{:=} a_j$
+    \For{$i \mathrel{:=} j - 1$ downto 1}
+        \If{$a_i > k$}
+            \State $a_{i+1} = a_i$
+        \Else
+            \State break
+        \EndIf
+        \State $a_{i+1} \mathrel{:=} k$
+    \EndFor
+\EndFor
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 Докажем корректность алгоритма формально. Для этого найдём \emph{инвариант}.
 
-\textbf{Инвариант:} в начале каждой итерации цикла по $j$ массив с 1 по $j-1$ индекс уже отсортирован;
-при этом он состоит из тех же элементов, что и раньше.
+\textbf{Инвариант:} в начале каждой итерации цикла по $j$ массив с 1 по $j-1$ индекс уже отсортирован. При этом он состоит из тех же элементов, что и раньше.
 
 Если это условие выполняется, то после выполнения алгоритма, весь массив (с 1-го по $n$-ый индексы) будет отсортирован.
 
-
-Докажем по индукции:
+\begin{proof} По индукции:
 
 \textbf{База:} $j=2$ --- $a[1:1]$ отсортирован
 
-\textbf{Переход} Всё до $j$-го отсортировано; Поставим $a_j$ на нужное место
-
+\textbf{Переход} Всё до $j$-го отсортировано; Поставим $a_j$ на нужное место. Тогда полученный массив также будет отсортирован.
+\end{proof}
 Насколько эффективно он работает?  Понятно, что это зависит от входных данных. Ясно, что чем больше элементов, тем дольше он работает.
 Понятно также, что если массив уже отсортирован, то работать он будет быстрее.
 
@@ -78,55 +97,59 @@ insertion_sort(a)
     &\text{в лучшем случае.}
 \end{align}
 
-Однако оценка в лучшем случае, вообще говоря, бесполезна. Ведь любой алгоритм можно модифицировать так, чтобы в каком-то случае он
-работал очень быстро.
+Однако оценка в лучшем случае, вообще говоря, бесполезна. Ведь любой алгоритм можно модифицировать так, чтобы в каком-то случае он работал очень быстро.
 
-Асимптотический анализ: как меняется $T(n)$ при $n\to \infty$?
+\
 
-Для этого обычно применяют $O$-нотацию или $\Theta$-нотацию.
+\textbf{Асимптотический анализ:} как меняется $T(n)$ при $n\to \infty$? Для исследования этого обычно применяют $O$-нотацию или $\Theta$-нотацию.
 
-$\Theta(g(n)) = \{f(n)\mid\exists c_1, c_2 > 0: \forall n\geqslant n_0 \implies 0 \leqslant c_1g(n) \leqslant f(n) \leqslant c_2g(n)\}$
+\[\Theta(g(n)) = \{f(n)\mid\exists\,c_1, c_2 > 0: \forall n\geqslant n_0 \implies 0 \leqslant c_1g(n) \leqslant f(n) \leqslant c_2g(n)\}\]
 
-$f(n) = 3n^2+2n-6$
+Например, пусть задана функция $f(n) = 3n^2 + 2n - 6$. Тогда $f(n) \in \Theta(n^2)$.
 
-$f(n) \in \Theta(n^2)$
+Асимптотика --- это хорошо, но на константы тоже стоит обращать внимание: для маленьких $n$ вполне может быть, что $n^3$ работает быстрее, чем $n$.
 
-Асимптотика --- это хорошо, но на константы тоже стоит обращать внимание: для маленьких $n$ вполне может быть, что $n^3$ работает
-быстрее, чем $n$.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}
+\addplot [domain=0:5, samples=101,unbounded coords=jump]{x+60} node[below,pos=0.9] {$x + 60$};
+\addplot [domain=0:5, samples=101,unbounded coords=jump]{x^3} node[below,pos=0.85] {$\quad x^3$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
-Оценим худший случай нашего алгоритма:
+Оценим \emph{худший случай} нашего алгоритма (когда на каждом шагу приходится совершать максимальное число перемещений): $T(n) = \sum\limits_{j=2}^n\sum\limits_{i=j-1}^1\Theta(1) = \sum\limits_{j=2}^n\Theta(j) = \Theta(n^2)$
 
-$T(n) = \sum\limits_{j=2}^n\sum\limits_{i=j-1}^1\Theta(1) = \sum\limits_{j=2}^n\Theta(j) = \Theta(n^2)$
+\emph{Средний случай:} Предположим, что все входы равновероятны. Тогда будет выполняться примерно половина сравнений и $T(n) = \sum\limits\Theta(\frac{j}{2}) = \Theta(n^2)$
 
-Средний случай:
+\emph{Лучший случай} --- это случай, когда массив уже отсортирован. Тогда $T(n) = \Theta(n)$.
 
-Предположим, что все входы равновероятны. Тогда будет выполняться примерно половина сравнений.
+\
 
-$T(n) = \sum\limits\Theta(\frac{j}{2}) = \theta(n^2)$
+Рассмотрим другой алгоритм --- \emph{сортировку слиянием}.
 
-Лучший случай:
-
-$\Theta(n)$.
-
-Рассмотрим другой алгоритм --- сортировку слиянием.
-
-\begin{lstlisting}
-merge_sort(a)
-    n:= |a|
-    b_1 := merge_sort(a[1:\frac{n}{2}])
-    b_2 := merge_sort(a[\frac{n}{2}+1:n])
-return merge(b_1, b_2)
-\end{lstlisting}
+\begin{algorithm}
+\caption{Алгоритм сортировки слиянием}
+\begin{algorithmic}[1]
+\Function{merge\_sort}{$a$}\Comment{$a = (a_1, a_2, \ldots, a_n)$}
+\State $n \mathrel{:=} |a|$
+\If{$n > 1$}
+    \State $b_1 \mathrel{:=} \textsc{merge\_sort}(a[1:\frac{n}{2}])$
+    \State $b_2 \mathrel{:=} \textsc{merge\_sort}(a[\frac{n}{2}+1:n])$
+    \State $a \mathrel{:=} \textsc{merge}(b_1, b_2)$
+\EndIf
+\State return $a$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 Рассмотрим, как может работать merge.
 
 $[2,5,6,8];[1,3,7,9]$
 
-Будем рассматривать элементы из массивов: $2>1$ --- первый элемент --- 1; $2<3$ --- второй элемент --- 2\dots
+Будем рассматривать элементы из массивов: $2>1$ --- первый элемент --- 1; $2<3$ --- второй элемент --- 2\dots Очевидно, что алгоритм корректен, а его сложность --- $\Theta(n_1 + n_2)$. // ЯННП. Тамерлан, прошу поправить.
 
-Очевидно, что алгоритм корректен, а его сложность --- $\Theta(n_1 + n_2)$.
-
-Пусть худшее время для $merge\_sort$ --- $T(n)$. Тогда
+Пусть худшее время для \textsc{merge\_sort} --- $T(n)$. Тогда
 
 $T(n) = \begin{cases}
     \Theta(1), n=1\\
@@ -135,7 +158,26 @@ $T(n) = \begin{cases}
 
 Построим дерево рекурсии:
 
+\begin{center}
+\begin{forest}
+for tree={
+    %parent anchor=south,
+    %child anchor=north,
+    if n children=0{
+      font=\itshape,
+      %tier=terminal,
+    }{},
+  }
+[$T(n)$ [$T(n/2)$ [$T(n/4)$ [\ldots] [\ldots] [\ldots]]
+                  [$cn/2$]
+                  [$T(n/4)$ [\ldots] [\ldots] [\ldots]]]
+        [$cn$]
+        [$T(n/2)$ [$T(n/4)$ [\ldots] [\ldots] [\ldots]]
+                  [$cn/2$]
+                  [$T(n/4)$ [\ldots] [\ldots] [\ldots]]]]
+\end{forest}
+\end{center}
 
-На каждом уровне $cn$ работы, а высота дерева --- $\log_2n$. Общее время работы --- $n\Theta(1)+cn\log n$.
+На каждом уровне $cn$ работы, а высота дерева --- $\log_2n$. Общее время работы --- $n\Theta(1)+cn\log n = \Theta(n\log{n})$.
 
 \end{document}
