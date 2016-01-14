@@ -1,26 +1,5 @@
-﻿\documentclass[12pt,a4paper]{article}
-\usepackage{listings}
-\usepackage{amssymb,amsmath,mathtools,amsthm}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
-\usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
-\usepackage{indentfirst}
-\usepackage[colorlinks=true, urlcolor=magenta]{hyperref}
-\usepackage{pgfplots}
-\usepackage{forest}
-
-\title{Алгоритмы и структуры данных, лекция 2}
-\date{14.01.2016}
-\author{}
-
-\begin{document}
-\maketitle
-
-\section*{Задача сортировки}
+﻿\section{Алгоритмы сортировки 14.01.2016}
+\subsection*{Задача сортировки}
 \textbf{Вход:} последовательность чисел (строго говоря, может быть что угодно с полным порядком) $(a_1, a_2, \ldots, a_n)$.
 
 \textbf{Выход:} $(a_{i_1}, a_{i_2}, \ldots, a_{i_n})$, где $a_{i_k} \leq a_{i_{k+1}}$. Другими словами, на выходе получается отсортированная по возрастанию последовательность. 
@@ -180,4 +159,3 @@ for tree={
 
 На каждом уровне $cn$ работы, а высота дерева --- $\log_2n$. Общее время работы --- $n\Theta(1)+cn\log n = \Theta(n\log{n})$.
 
-\end{document}
