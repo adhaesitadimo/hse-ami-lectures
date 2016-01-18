@@ -1,0 +1,103 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{cmap}           % Пакет для поиска в полученной пдфке
+\usepackage[utf8]{inputenc} % Ззамена кодировки файла на utf8
+\usepackage[T2A]{fontenc}   % Подключение кодировки шрифтов
+\usepackage[russian]{babel} % Использование русского языка 
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=2cm]{geometry} % Изменение размеров полей
+\usepackage{indentfirst}    % Красная строка в начале текста
+\usepackage{amsmath, amsfonts, amsthm, mathtools, amssymb, icomma, units, yfonts}
+\usepackage{amsthm} % Пакет для нормального оформления теорем
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{esvect}
+\usetikzlibrary{calc,matrix}
+
+%Теоремы
+%11.01.2016
+\newtheorem*{standartbase}{Теорема о стандартном базисе}
+\newtheorem*{fulllemma}{Лемма}
+\newtheorem*{sl1}{Следствие 1}
+\newtheorem*{sl2}{Следствие 2}
+\newtheorem*{monotonousbase}{Теорема о монотонном базисе}
+\newtheorem*{scheme}{Утверждение 1}
+\newtheorem*{n2}{Утверждение 2}
+\newtheorem*{zhegalkin}{Теорема Жегалкина}
+\newtheorem*{poste}{Теорема Поста}
+
+%18.01.2016
+\newtheorem*{on2n}{Теорема}
+\newtheorem*{o2ndivn}{Теорема}
+\newtheorem*{existsFgthen2ndivn}{Теорема}
+
+\renewcommand{\qedsymbol}{\textbf{Q.E.D.}}
+
+\begin{document}
+\title{Дискретная математика. Модуль 3. Лекция 1}
+\author{Лекторий ПМИ ФКН 2015-2016\\Бубнова Валерия\\Жижин Пётр\\Пузырев Дмитрий}
+\date{18 января 2016}
+
+\maketitle
+\section{Размер схемы. Сложность булевой функции. Верхние и нижние оценки сложности}
+\subsection*{Размер схемы. Сложность булевой функции}
+\textit{Размер булевой схемы} --- это количество присваиваний в схеме 
+$g_1, \ldots, g_L$ для вычисления функции $f: \{0, 1\}^n \rightarrow \{0, 1\}$.
+
+\textit{Сложность функции f в базисе B} --- это минимальный размер булевой схемы, 
+вычисляющей функцию $f$ в базисе B. Если базис не указывают -- имеют в виду 
+стандартный базис $\{\lnot, \lor, \land\}$. \textit{Обозначение:} $C(f)$.
+
+\underline{Утверждение:} Если $B$ -- конечный базис, тогда $\exists c: \forall f $ если $f$ 
+вычисляется схемой $S$ в $B$ размера $L$, тогда существует схема в стандартном базисе
+размера меньше, чем $c \cdot L$, вычисляющая ту же функцию $f$. 
+\begin{proof}
+    Пусть $f$ вычисляется схемой $S$ в базисе $B$ путём следующих присваиваний:
+    \[
+    g_1, \ldots, g_k, \ldots, g_L = f
+    \]
+    Рассмотрим некоторую $g_k$ как функцию в базисе $B$ от каких-то аргументов.
+    \[
+    g_k = g(\ldots), g \in B
+    \]
+    Для этой функции есть некоторая схема в стандартном базисе некоторого размера $L_k'$
+    (так как в стандартном базисе любая функция вычислима, в том числе и $g$).
+    
+    Каждую $g_i$ заменим на соответствующую схему в стандартном базисе размера $L_i'$.
+    Тогда и вся функция вычислима в стандартном базисе схемой размера:
+    \[
+    L'= L_1' + L_2' + L_3' + \ldots + L_L' \leqslant L \cdot max(L_1', L_2', \ldots
+    L_L') = L \cdot c_f
+    \]
+
+    Для того чтобы теперь подобрать константу $c$ в определении опять возьмем наибольшее
+    из всех $c_f$.
+\end{proof}
+
+\subsection*{Верхняя оценка схемной сложности}
+\begin{on2n}
+    $C(f) = O(n \cdot 2^n)$
+\end{on2n}
+\begin{proof}
+    Повторим предыдущие рассуждения при доказательстве того, что в стандартном
+    базисе любая функция вычислима. Для этого вспомним:
+    \[
+    f(x) = \bigvee\limits_{\substack{a: f(a) = 1 \\ a \in \{0, 1\}^n}} x^a, \ 
+    x^a = \bigwedge\limits_{i = 1}^{n} x_i^{a_i}
+    \]
+    Нетрудно посчитать, что схема для вычисления $x^a$ имеет размер $L_a = O(n)$.
+    Тогда итоговый размер схемы $L \leqslant 2^n \cdot O(n) \iff L = O(n \cdot 2^n)$.
+\end{proof}
+\begin{o2ndivn}
+    $C(f) = O(\frac{2^n}{n})$
+\end{o2ndivn}
+\begin{proof}
+    В доказательстве много возни, желающие могут найти и прочитать.
+    Идея в том, что многие схемы можно повторять примерно $n^2$ раз.
+\end{proof}
+
+\subsection*{Нижняя оценка схемной сложности}
+\begin{existsFgthen2ndivn}
+    Существует функция $f: \{0, 1\}^n \rightarrow \{0, 1\}$
+    такая, что $C(f) \geqslant \frac{2^n}{10n}$ 
+    (в точности то же самое, что $C(f) = \Omega(\frac{2^n}{n})$).
+\end{existsFgthen2ndivn}
+\end{document}
