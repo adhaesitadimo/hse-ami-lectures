@@ -1,0 +1,116 @@
+﻿\documentclass[12pt,a4paper]{article}
+\usepackage{listings}
+\usepackage{amssymb,amsmath,mathtools,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{indentfirst}
+\usepackage[colorlinks=true, urlcolor=magenta]{hyperref}
+\usepackage{pgfplots}
+\usepackage{forest}
+
+\title{Алгоритмы и структуры данных, лекция 3}
+\date{19.01.2016}
+\author{}
+
+\begin{document}
+\maketitle
+
+$\Theta(g(n)) = \left\{ f(n)\mid \exists c_1>0, c_2>0 \exists n_0: \forall n \geqslant n_0 \implies 0\leqslant c_1g(n)\leqslant f(n) \leqslant c_2g(n) \right\}$
+
+$O(g(n)) = \left\{ f(n)\mid \exists  c_2>0 \exists n_0: \forall n \geqslant n_0 \implies 0\leqslant f(n) \leqslant c_2g(n) \right\}$
+
+$\Omega(g(n)) = \left\{ f(n)\mid \exists c_1>0 \exists n_0: \forall n \geqslant n_0 \implies 0\leqslant c_1g(n)\leqslant f(n) \right\}$
+
+$o(g(n)) = \left\{ f(n)\mid \forall  c_2>0 \exists n_0: \forall n \geqslant n_0 \implies 0\leqslant f(n) \leqslant c_2g(n) \right\}$
+
+$\omega(g(n)) = \left\{ f(n)\mid \forall c_1>0 \exists n_0: \forall n \geqslant n_0 \implies 0\leqslant c_1g(n)\leqslant f(n) \right\}$
+
+$\lambda n.n \in o(\lambda n.n \log_2 n)$
+
+$\log_c n = \frac {\log_2 n}{\log_2 c}$ --- поэтому не пишут основание логарифма.
+
+Вернёмся к сортировке слиянием. 
+
+Алгоритм состоит из трёх шагов:
+
+\vspace{0.5cm}
+\textbf{Разделяй и властвуй}
+\begin{enumerate}
+    \item Разбить задачу на подзадачи; | $\Theta(1)$
+    \item Рекурсивно решить подзадачи; | $2T(\frac n2)$
+    \item Объединить решения задач в одно глобальное. | $\Theta(n)$
+\end{enumerate}
+
+$T(n) = 2T(\frac n2) + \Theta(n)$
+
+$\Theta(n\log n)$
+
+\section*{Быстрая сортировка}
+
+Задача та же --- отсортировать массив.
+
+Воспользуемся методом ``Разделяй и властвуй''. Разобьем по-другому:
+
+Выберем в массиве опорный элемент $x$ (как-то). Пройдем по всем элементам и запишем те элементы, что меньше $x$ до него, а те, что больше --- после.
+
+Две подзадачи: сортировка двух подмассивов.
+
+Третий шаг --- соединить их.
+
+\begin{lstlisting}
+Partition(a, p, q)
+    i := p
+    for j - p+1 to q do
+        if a[j] < a[p] then
+            i := i+1
+            a[i], a[j] = a[j], a[i]
+            return i
+\end{lstlisting}
+
+\begin{enumerate}
+    \item Разбить задачу на подзадачи; | $\Theta(n)$
+    \item Рекурсивно решить подзадачи; | $T(r-1) + T(n-r)$
+    \item Объединить решения задач в одно глобальное. | $0$
+\end{enumerate}
+
+$T(n) = T(r-1) + T(n-r) + \Theta(n)$
+
+Оптимальный вариант:
+
+$T(n) = T(\frac n2) + T(\frac n2) + \Theta(n) \implies \Theta(n\log n)$
+
+Худший вариант:
+
+$T(n) = T(\frac n-1) + \Theta(n) \implies \Theta(n^2)$
+
+Пусть при каждом разбиении обе части не менее четверти.
+
+Подзадача типа j:
+Размер входного массива $n'$; $\left( \frac14 \right)^j < n' \leqslant\left( \frac34 \right)^j$
+
+Время на подзадачу типа $j$ --- $O\left( \left( \frac34 \right)^j \right)n$
+
+Заметим, что подзадачи типа $j$ не пересекаются; из задачи типа $j$ получаются задачи типа не меньше $j+1$.
+
+Количество подзадач типа $j$ $\leqslant \left( \frac43 \right)^{j+1}$.
+
+Время на все подзадачи типа $j$ --- $O\left( \left( \frac34 \right)^jn\cdot\left( \frac43 \right)^{j+1} \right) = O(n)$;
+
+Максимальное $j$ --- $\log_{\frac43}n$
+
+Общее время --- $O(n\log n)$
+
+
+Но это если нам везёт.
+
+\section*{Как обеспечить везение?}
+
+Мы хотим, чтобы опорный элемент был близок к середине (в отсортированном массиве). Условно, в пределах средних двух четвертей. Если выбирать наугад, вероятность $50\%$.
+
+Предположим, что мы выбираем случайный элемент. Распределим все прочие, и если одна из частей меншь четверти, забудем про этот элемент и выберем другой. Повторим, пока не получим хороший элемент. В среднем на это уйдёт две попытки $\left( \frac1P \right)$. На сложности алгоритма это нье сказывается никак, т.к. меняется только константа. Зато теперь так не только в лучшем, но и в среднем случае.
+\end{document}
