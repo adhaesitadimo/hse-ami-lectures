@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\allowdisplaybreaks
+
+\title{Лекция по АиСД №2}
+
+\date{\today}
+
+\author{Попов Никита}
+
+
+\begin{document}
+\maketitle
+
+Мы рассматривали случаи, когда все элементы различны, однако, если есть равные, алгоритм может сломаться.
+
+$\begin{array}{|c|c|c|c|}
+    \hline
+    <x&>x&?&=x\\
+    \hline
+\end{array}$
+
+Индексы границ --- $i$, $j$, $k$.
+\begin{lstlisting}
+Partition3(a)
+    i:= 1
+    j:= 1
+    k:= n
+    while j < k do
+    if a[j] = a[n] then
+        k -= 1
+        a[j], a[k] := a[k], a[j]
+\end{lstlisting}
+\hspace{1.8cm}Однако, мы не сдвинули $j$ --- на $j$-ом месте теперь нерассмотренный ранее элемент
+\begin{lstlisting}
+    else if a[j] < a[n] then
+        a[i], a[j] := a[j], a[i]
+        i += 1
+        j += 1
+    else
+        j += 1
+\end{lstlisting}
+
+После выхода из while получим
+
+$\begin{array}{|c|c|c|c|}
+    \hline
+    <x&>x&=x\\
+    \hline
+\end{array}$
+
+При этом $j = k$.
+
+Остаётся только переставить части массива.
+
+\begin{lstlisting}
+    while i < k and j <= n do
+        a[i], a[j] := a[j], a[i]
+        i += 1
+        j += 1
+\end{lstlisting}
+
+Самая быстрая из наших сортировок --- $n \log n$. А можно ли быстрее?
+
+На основе только сравнений --- нет. Но если мы знаем, что числа только целые и не больше некоторой константы $C$, то можно сделать так:
+
+Тут вставлю описание потом. (сортировка подсчётом)
+
+Рассмотрим общий алгоритм --- через сравнения.
+
+$n = 3$.
+
+*картинка из тетради*
+
+$n$ элементов; не меньше $n!$ листьев.
+
+Дерево бинарное, так что $2^h \geqslant n!$
+
+$h \geqslant \log_2 n! \geqslant log_2\left( \frac{n}{2} \right)^{\frac{n}{2}} = \frac{n}{2}\log_2\frac{n}{2} = \Omega(n\log n)$
+
+\section*{Поиск медианы}
+
+Медиана --- такой элемент массива, что не меньше половины элементов меньше неё, и не меньше половины --- больше.
+
+Очевидно, что можно отсортировать и взять средний --- $\Theta(n)$.
+
+Можно ли за линейное время? Можно.
+
+
+Поиск $k$-ой порядковой статистики:
+\begin{lstlisting}
+Select(a, k)
+    choose pivot a[p] = x
+    i := Partition(a, p)
+    if i = k then
+        return a[i]
+    if i > k then
+        return Select(a[:i-1, k])
+    return Select(a[i+1:, k-i])
+\end{lstlisting}
+
+$\begin{array}{|c|c|c|}
+    \hline
+    <=x&x&>=x\\
+    \hline
+    &i&
+\end{array}$
+
+Как и в быстрой сортировке, неправильно выбранный опорный элемент портит скорость до $n^2$.
+
+$j$-подзадача размер $n'$.
+
+$\left( \frac{3}{4} \right)^{j+1}n < n' \leqslant \left( \frac{3}{4} \right)^{j}n$
+
+Среднее время с одним $j$ --- 2;
+
+Максимальное $j$ --- $O(\log n)$
+
+$T(n) \leqslant \sum\limits_{j=0}^{\log_{\frac{4}{3}}n} 2\cdot c\cdot \left( \frac{3}{4} \right)^jn = 2cn\sum\left( \frac{3}{4} \right)^j \leqslant 2cn$
+
+\section*{Медиана медиан}
+ 
+Divide a into groups of 5
+
+Choose medians $m_{1}, \ldots, m_{\frac{n}{5}}$
+
+m:= Select ($[m_i], \frac{n}{10}$)
+
+choose x as pivot
+
+
+
+$T(n) \leqslant cn + T\left(\frac{n}{5}\right) + T\left( \frac{7}{10}n \right)$
+
+$T(n) \leqslant ln$ для некоторого $l$
+
+$T(n) \leqslant cn + \frac{ln}{5} + \frac{7}{10}ln$
+\end{document}
