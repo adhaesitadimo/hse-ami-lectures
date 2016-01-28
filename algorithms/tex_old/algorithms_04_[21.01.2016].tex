@@ -1,9 +1,25 @@
-\input{header.tex}
+\documentclass[11pt,a4paper]{article}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\allowdisplaybreaks
+
+\title{Лекция по АиСД №2}
+
+\date{\today}
+
+\author{Попов Никита}
+
 
 \begin{document}
-\section*{Лекция 4 от 21.01.2016}
+\maketitle
 
-\subsection*{Двоичное дерево поиска}
+\section*{Двоичное дерево поиска}
 
 Так как курс всё же называется <<Алгоритмы и \emph{структуры данных}>>, рассмотрим такую структуру данных, как \textbf{двоичное дерево поиска}.
 
@@ -54,7 +70,7 @@ tree_sort(a)
 
 \[
 \begin{array}{c|c}
-	 1\includegraphics[width=8cm]{images/04_tree_1.pdf}&
+    1\includegraphics[width=8cm]{images/04_tree_1.pdf}&
     2\includegraphics[width=8cm]{images/04_tree_2.pdf}\\\hline
     3\includegraphics[width=8cm]{images/04_tree_3.pdf}&
     4\includegraphics[width=8cm]{images/04_tree_4.pdf}\\\hline

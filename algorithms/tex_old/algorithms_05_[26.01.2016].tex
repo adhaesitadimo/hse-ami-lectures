@@ -1,8 +1,25 @@
-\input{header.tex}
+\documentclass[12pt,a4paper]{article}
+\usepackage{listings}
+\usepackage{amssymb,amsmath,mathtools,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{indentfirst}
+\usepackage[colorlinks=true, urlcolor=magenta]{hyperref}
+\usepackage{pgfplots}
+\usepackage{forest}
+
+\title{Лекция по АиСД №5}
+\date{26.01.2016}
+\author{}
+
 
 \begin{document}
-
-\section*{Лекция 5 от 26.01.2016}
+\maketitle
 
 \subsection*{Быстрая сортировка. Продолжение}
 Говоря об алгоритме быстрой сортировки (\textsc{QSort}), мы рассматривали только случаи, когда все элементы различны. Однако это далеко не всегда так. Если в входном массиве есть равные элементы, то алгоритм может застопориться. Для того, чтобы избежать этого, изменим алгоритм \textsc{Partition}. Попытаемся преобразовывать массив таким образом, чтобы в левой части стояли элементы строго меньшие опорного, в правой --- строго большие, а в середине --- равные ему:
@@ -148,7 +165,7 @@ for tree={
 Можно.
 Напишем алгоритм, находящий элемент, стоящий на k-ом месте в массиве, получающемся из входного после сортировки.
 Это называется поиском $k$-ой порядковой статистики.
-Составим этот алгоритм, немного модифицировав QSort:
+Составим этот алгоритм, немного модифицировав QSort:\\\\
 
 \begin{algorithm}
 \caption{Поиск $k$-ой порядковой статистики}
@@ -168,9 +185,15 @@ for tree={
 \end{algorithmic}
 \end{algorithm}
 
-Как и в быстрой сортировке, неправильно выбранный опорный элемент портит скорость до $n^2$. Будем выбирать опорный элемент случайным образом. Попробуем посчитать время работы в среднем случае.
 
-$j$-подзадача размера $n'$. $\left( \frac{3}{4} \right)^{j+1}n < n' \leqslant \left( \frac{3}{4} \right)^{j}n$
+
+Как и в быстрой сортировке, неправильно выбранный опорный элемент портит скорость до $n^2$. Будем выбирать опорный элемент случайным образом.
+
+Попробуем посчитать время работы в среднем случае.
+
+$j$-подзадача размера $n'$.
+
+$\left( \frac{3}{4} \right)^{j+1}n < n' \leqslant \left( \frac{3}{4} \right)^{j}n$
 
 Как и в QSort, в среднем мы потратим две попытки на переход к следующему $j$.
 
@@ -202,7 +225,7 @@ $T(n) \leqslant \sum\limits_{j=0}^{\log_{\frac{4}{3}}n} 2\cdot c\cdot \left( \fr
 	\State $i \mathrel{:=} \textsc{Partition}(a, p)$
 	\If{$i \mathrel{:=} k$}
 		\State return $a[i]$	
-	\EndIf	
+	\EndIf
 	\If{$i > k$}
 		\State return $\textsc{Select}(a[1 \ldots i - 1], k)$
 	\Else
