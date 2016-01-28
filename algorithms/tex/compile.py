@@ -42,6 +42,11 @@ for _ in range(2):
     proc = subprocess.Popen(['pdflatex', 'temp.tex'])
     proc.communicate()
 
+# If file algorithms_all_lectures.pdf already exists, we will delete it.
+for file in os.listdir('./'):
+    if file == 'algorithms_all_lectures.pdf':
+        os.remove(os.path.join('./', file))
+
 # Renaming the file
 os.rename('temp.pdf', 'algorithms_all_lectures.pdf')
 
