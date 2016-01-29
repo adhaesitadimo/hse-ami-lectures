@@ -22,7 +22,7 @@ with open('temp.tex', 'w', encoding="utf8") as temp:
 
     for elem in os.listdir('./'):
         if os.path.isfile(os.path.join('./', elem)):
-            if elem.startswith('algorithms'):
+            if elem.startswith('linear-algebra'):
                 if elem.endswith('.tex'):
                     lectures.append(elem)
 
@@ -45,10 +45,10 @@ for _ in range(2):
 # Saving the file
 os.chdir('..')
 for file in os.listdir('./'):
-    if file == 'algorithms_all_lectures.pdf':
+    if file == 'linear-algebra_all_lectures.pdf':
         os.remove(os.path.join('./', file))
 
-os.rename('./tex/temp.pdf', 'algorithms_all_lectures.pdf')
+os.rename('./tex/temp.pdf', 'linear-algebra_all_lectures.pdf')
 os.chdir('tex')
 
 # Removing the litter
