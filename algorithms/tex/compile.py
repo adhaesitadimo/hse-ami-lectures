@@ -39,8 +39,23 @@ with open('temp.tex', 'w', encoding="utf8") as temp:
 
 # In order to create table of contents, I have to compile it twice.
 for _ in range(2):
-    proc = subprocess.Popen(['pdflatex', 'temp.tex'])
-    proc.communicate()
+    yes = subprocess.Popen(['yes', '""'], stdout=subprocess.PIPE)
+    proc = subprocess.Popen(['pdflatex', 'temp.tex'], stdin=yes.stdout, stdout=subprocess.PIPE)
+    lines = proc.communicate()[0].decode('utf-8', 'ignore').split("\n")
+
+counter = 0
+seen = set()
+for line in lines:
+    try:
+        if line.startswith('!') and line not in seen:  # Filter and find errors
+            counter = 4
+            seen.add(line)
+        if counter:
+            counter -= 1
+            print(line)
+    except:
+        pass
+
 
 # Saving the file
 os.chdir('..')
