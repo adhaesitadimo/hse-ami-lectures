@@ -2,10 +2,6 @@
 
 \begin{document}
 \renewcommand{\phi}{\varphi}
-\newcommand{\Mat}{\mathrm{Mat}}
-\newcommand{\id}{\mathrm{id}}
-\newcommand{\izom}{\xrightarrow{\sim}}
-\newcommand{\leftizom}{\xleftarrow{\sim}}
 \section{Лекция 18 от 29.01.2016}
 
 \subsection{Матрица перехода и переход к новому базису}
@@ -190,7 +186,7 @@ A(\alpha X) = \alpha(AX)
 
 \subsection{Изоморфизм}
 \begin{Def}
-Отображение $\phi: V \rightarrow W$ называется изоморфизмом, если $\phi$ линейно и биективно. Обозначение: $\phi : V \izom  W$.
+Отображение $\phi: V \rightarrow W$ называется изоморфизмом, если $\phi$ линейно и биективно. Обозначение: $\phi : V \isom  W$.
 \end{Def}
 \vspace{0.3cm}
 Рассмотрим те же примеры:
@@ -227,7 +223,7 @@ w_1, w_2 \in W \Rightarrow \exists v_1, v_2 \in V:
 \end{proof}
 
 \begin{Def}
-Два векторных пространства $V$ и $W$ называются изоморфными, если существует изоморфизм $\phi: V \izom W$ (и тогда существует изоморфизм $V \leftizom W$ по предположению). Обозначение: $V \simeq W$ или $V \cong W$.
+Два векторных пространства $V$ и $W$ называются изоморфными, если существует изоморфизм $\phi: V \isom W$ (и тогда существует изоморфизм $V \leftisom W$ по предположению). Обозначение: $V \simeq W$ или $V \cong W$.
 \end{Def}
 
 Отображения можно соединять в композиции:
@@ -277,7 +273,7 @@ w_1, w_2 \in W \Rightarrow \exists v_1, v_2 \in V:
 
 Но для начала докажем следующую лемму.
 
-\begin{Lemma}
+\begin{Lemma}[1]
 Для векторного пространства $V$ над полем $F$ размерности $n$ верно, что $V \simeq F^n$.
 \end{Lemma}
 \begin{proof}

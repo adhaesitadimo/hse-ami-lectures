@@ -23,6 +23,7 @@
 \usepackage{array}
 \usepackage{amsfonts}
 \usepackage{icomma}					% "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{mathbbol}				% Для \mathbb со строчными буквами
 
 % Номера формул
 \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
@@ -43,7 +44,7 @@
 
 % Графики
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.12}
+%\pgfplotsset{compat=1.12}
 
 % Изменим формат \section и \subsection:
 \usepackage{titlesec}
@@ -75,8 +76,15 @@
 \newtheorem*{Consequence}{Следствие}
 \newtheorem*{Theorem}{Теорема}
 \newtheorem*{Statement}{Утверждение}
+\newtheorem*{Task}{Упражнение}
 
 \renewcommand{\Re}{\mathrm{Re\:}}
 \renewcommand{\Im}{\mathrm{Im\:}}
 \newcommand{\Arg}{\mathrm{Arg\:}}
 \renewcommand{\arg}{\mathrm{arg\:}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\isom}{\xrightarrow{\sim}} 
+\newcommand{\leftisom}{\xleftarrow{\sim}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ker}{\mathrm{Ker}\:}

@@ -25,6 +25,7 @@ with open('temp.tex', 'w', encoding="utf8") as temp:
             if elem.startswith('algorithms'):
                 if elem.endswith('.tex'):
                     lectures.append(elem)
+    lectures.sort()
 
     # Adding it to the temp file
     for lecture_name in lectures:
