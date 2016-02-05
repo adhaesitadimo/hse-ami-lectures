@@ -1,0 +1,90 @@
+%% Определение размера листа и шрифта
+\documentclass[a4paper,12pt]{article}
+
+%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%% Изменяем размер полей
+\usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
+
+%% Графика
+\usepackage[pdftex]{graphicx}
+\graphicspath{{images/}}
+
+%% Различные пакеты для работы с математикой
+\usepackage{mathtools}				% Тот же amsmath, только с некоторыми поправками
+\usepackage{amssymb}				% Математические символы
+\usepackage{amsthm}					% Пакет для написания теорем
+\usepackage{amstext}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage{icomma}					% "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage{mathbbol}				% Для \mathbb со строчными буквами
+
+% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+% Ссылки
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+
+% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs}	 % Красивый матшрифт
+
+% Свои команды\textbf{}
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+% Графики
+\usepackage{pgfplots}
+%\pgfplotsset{compat=1.12}
+
+% Изменим формат \section и \subsection:
+\usepackage{titlesec}
+\titleformat{\section}
+{\vspace{1cm}\centering\LARGE\bfseries}	% Стиль заголовка
+{}										% префикс
+{0pt}									% Расстояние между префиксом и заголовком
+{} 										% Как отображается префикс
+\titleformat{\subsection}				% Аналогично для \subsection
+{\Large\bfseries}
+{}
+{0pt}
+{}
+
+% Информация об авторах
+\author{Группа лектория ФКН ПМИ 2015-2016 \\
+	Ася Иовлева \\
+	Ксюша Закирова \\
+	Руслан Хайдуров}
+\title{Лекции по предмету \\
+	\textbf{Линейная алгебра и геометрия}}
+\date{2016 год}
+
+\newtheorem*{Def}{Определение}
+\newtheorem*{Lemma}{Лемма}
+\newtheorem*{Suggestion}{Предложение}
+\newtheorem*{Examples}{Пример}
+\newtheorem*{Comment}{Замечание}
+\newtheorem*{Consequence}{Следствие}
+\newtheorem*{Theorem}{Теорема}
+\newtheorem*{Statement}{Утверждение}
+\newtheorem*{Task}{Упражнение}
+
+\renewcommand{\Re}{\mathrm{Re\:}}
+\renewcommand{\Im}{\mathrm{Im\:}}
+\newcommand{\Arg}{\mathrm{Arg\:}}
+\renewcommand{\arg}{\mathrm{arg\:}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\isom}{\xrightarrow{\sim}} 
+\newcommand{\leftisom}{\xleftarrow{\sim}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ker}{\mathrm{Ker}\:}
