@@ -2,7 +2,7 @@
 \let\epsilent\varepsilon
 \begin{document}
 
-\section*{Лекция 8 от 4.02.2016}
+\section*{Лекция 9 от 9.02.2016}
 
 \subsection{Продажа земли}
 
@@ -105,7 +105,7 @@ Find_Solution(OPT):
 
 OPT$(i)$ --- оптимальное размещение $w_i, \ldots, w_n$.
 
-$\mathm{OPT}(i) = \min\limits_{i\leqslant j\leqslant n} \left\{ c(i, j)+ \mathrm{OPT}(j+1) \right\}$.
+$\mathrm{OPT}(i) = \min\limits_{i\leqslant j\leqslant n} \left\{ c(i, j)+ \mathrm{OPT}(j+1) \right\}$.
 
 \begin{lstlisting}
 ComputeOpt(w_1,..., w_n)
