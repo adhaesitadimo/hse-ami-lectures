@@ -63,10 +63,11 @@
 
 \begin{algorithm}
 \begin{algorithmic}[1]
-\While{$i < k$ and $j \leqslant n$}
+\State  $j \mathrel{:=} n$
+\While{$i < k$ and $j \geqslant n$}
 	\State $a[i], a[j] \mathrel{:=} a[j], a[i]$
 	\State $i \mathrel{:=} i + 1$
-	\State $j \mathrel{:=} j + 1$
+	\State $j \mathrel{:=} j - 1$
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
