@@ -34,6 +34,9 @@
 \pgfplotsset{compat=1.12}
 \usepackage{forest}					% Деревья
 \usepackage{titlesec}				% Изменение формата заголовков
+\usepackage[normalem]{ulem}			% Для зачёркиваний
+\usepackage[autocite=footnote]{biblatex}	% Кавычки для цитат и прочее
+\usepackage[makeroom]{cancel}		% И снова зачёркивание (на этот раз косое)
 
 % Изменим формат \section и \subsection:
 \titleformat{\section}
@@ -49,6 +52,8 @@
 
 % Теоремы и утверждения. В комменте указываем номер лекции, в которой это используется.
 \newtheorem*{minimal_steps}{Утверждение}	% Лекция 1
+
+\let\epsilent\varepsilon % Лекция 8
 
 % Информация об авторах
 \author{Группа лектория ФКН ПМИ 2015-2016 \\
