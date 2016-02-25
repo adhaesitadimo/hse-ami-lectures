@@ -175,8 +175,8 @@ OPT(i) = $\min\limits_{i\leqslant j\leqslant n} \left\{ c(i, j)+ \mathrm{OPT}(j+
 			\State $OPT[n + 1] = 0$
 			\For{\(i \mathrel{:=} n\) \textbf{downto} 1}
 				\For{\(j \mathrel{:=} i\) \textbf{to} n}
-					\If{\(c(i, j) + OPT[j + i] \leqslant OPT[i]\)}
-						\State \(OPT[i] = c(i, j) + OPT[j + i]\)
+					\If{\(c(i, j) + OPT[j + 1] \leqslant OPT[i]\)}
+						\State \(OPT[i] = c(i, j) + OPT[j + 1]\)
 						\State \(best[i] = j\)
 					\EndIf
 				\EndFor
