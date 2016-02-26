@@ -151,7 +151,7 @@ x_n
     $A \in \Mat_{k\times m}, B\in \Mat_{m\times n}$. Тогда $\rk AB \leqslant \min\{\rk A, \rk B\}$
 \end{Consequence}
 \begin{proof}
-    Реализуем $A, B$ как матрицы линейных отображений, то есть $\phi_A\colon F^m \rightarrow F^k, \phi_B\colon F^n \rightarrow F^m$. Тогда матрица $AB$ --- матрциа отображения $\phi_A \circ \phi_B$.
+    Реализуем $A, B$ как матрицы линейных отображений, то есть $\phi_A\colon F^m \rightarrow F^k, \phi_B\colon F^n \rightarrow F^m$. Тогда матрица $AB$ --- матрица отображения $\phi_A \circ \phi_B$.
     \[
         \rk(AB) = \rk (\phi_A\circ\phi_B)
         \begin{cases}
@@ -179,7 +179,7 @@ x_n
 \begin{proof}[Бескоординатный способ]
      Пусть $\dim \Ker \phi = k$ и $e_1, \ldots, e_k$ --- базмс в $\Ker \phi$. Дополним его до базиса $V$ векторами $e_k, \ldots, e_n$. Тогда
     \[
-        \Im \phi = <\phi(e_1), \ldots, \phi(e_k), \ldots, \phi(e_n)> = <0, 0, \ldots, 0, \phi(e_{k+1}), \ldots, \phi(e_n)> = <\phi(e_{k+1}), \ldots, \phi(e_{n})>
+        \Im \phi = \langle\phi(e_1), \ldots, \phi(e_k), \ldots, \phi(e_n)\rangle = \langle0, 0, \ldots, 0, \phi(e_{k+1}), \ldots, \phi(e_n)\rangle = \langle\phi(e_{k+1}), \ldots, \phi(e_{n})\rangle
     \]
 Пусть $\alpha_{k+1}\phi(e_{k+1}) + \ldots + \alpha_n\phi(e_n) = 0$ для некоторых $\alpha_1, \ldots, \alpha_n \in F$. Тогда 
 \begin{align*}
