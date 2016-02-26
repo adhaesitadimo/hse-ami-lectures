@@ -1,0 +1,136 @@
+\input{header.tex}
+
+\begin{document}
+\renewcommand{\phi}{\varphi}
+
+\section{Лекция 22 от 22.02.2016}
+
+\subsection*{Деление многочленов с остатком}
+
+Пусть $F$ -- поле, $\mathbb{F}[x]$ --множество всех множеств от переменных $x$ с коэффициентами из $\mathbb{F}$.
+\begin{Theorem}
+	Пусть $G(x), H(x) \in \mathbb{F}[x]$ -- ненулевые многочлены, тогда существует и единственная пара $Q(x), R(x) \in \mathbb{F}(x)$, такие что:
+	\begin{enumerate}
+		\item $G(x) = Q(x)\cdot H(x) + R(x);$
+		\item $degR(x) < degH(x)$
+	\end{enumerate}
+\end{Theorem}
+\begin{proof}
+Аналогично делению рациональных чисел с остатком.
+\end{proof}
+Важный частный случай: $H(x) = x - a$
+Вспомним теорему Безу:
+\begin{Theorem}
+	Если $G(x), Q(x) \in \mathbb{F}[x]$ -- ненулевые многочлены, $a \in \mathbb{F}$, то $G(x) = Q(x)(x - a) + R, R = G(a).$
+\end{Theorem}
+\begin{proof}
+	$G(x) = Q(x)\cdot H(x) + R(x);$
+	$H(x) = x - a \Rightarrow degR < deg(x - a) \Rightarrow degR = 0$
+	Подставим $x = a$, получим:
+	$G(a) = Q(a)(a-a) + R = 0 + R = R \Rightarrow G(a) = R$
+\end{proof}
+\begin{Theorem}
+	Многочлен степени $n$ в после комплексных чисел имеет $n$ комплексных корней.
+\end{Theorem}
+\begin{proof}
+	По основной теореме алгебры каждый многочлен $G(x) \in \mathbb{C}[x]$ степени больше 1 имеет корень. Тогда $G(x) = (x - a_1)G_1(x),$ где $a_1$ -- корень многочлена $G(x)$. В свою очередь многочлен $G_1(x)$ также имеет корень и $G(x) = (x - a_1)G_1(x) = (x - a_1)(x - a_2)G_2(x) = \ldots = (x - a_1)(x - a_2)\ldots(x - a_n)b_n$, где $b_n$ -- коэффициент при старшем члене.
+\end{proof}
+Получим, что $b_nx^n + b_{n-1}x^{n-1} + \ldots + b_0 = b_n(x - a_1)^k_1\ldots(x - a_s)^k_s$
+\begin{Def}
+	Кратностью корня $a_i$ называется число $k_i$, такое что в многочлене $b_n(x - a_1)^k_1\ldots(x - a_s)^k_s$ множитель $(x - a_i)$ имеет степень $k_i$.
+\end{Def}
+\begin{Def}
+	Пусть $V$ -- конечномерное векторное пространство над полем $\mathbb{F}$. $\phi: V \to V$ -- линейный оператор. Тогда характеристический многочлен $\phi$ имеет вид:
+	\[\chi_{\phi}(t) = (-1)^n\det(\phi - tE) =
+  \begin{pmatrix}
+  a_{11} - t & a_{12} &\ldots &a_{1n}\\
+  a_{21} & a_{22} - t &\ldots &a_{2n} \\
+  \vdots &\vdots &\ddots &\vdots\\
+  a_{n1} &a_{n2} &\ldots & a_{nn} - t
+  \end{pmatrix}
+  = (-1)^n(t^n(-1)^n + \ldots)  = t^n + \ldots \]
+\end{Def}
+\begin{Task}
+	$c_{n-1}$ -- коэффициент при $t^{n-1}, c_0$ -- свободный член:
+	\[c_{n-1} = -tr\phi;\]
+        \[c_0 = (-1)^n \det\phi.\]
+\end{Task}
+\begin{Statement}
+	$\lambda$ -- собственное значение $\phi \Leftrightarrow \chi_\phi(\lambda) = 0.$ 
+\end{Statement}
+\begin{proof}
+	$\lambda$ -- собственное значение $\Leftrightarrow \exists v \neq 0: \phi(v) = \lambda {v} \Leftrightarrow A\phi v - \lambda {E}v = 0 \Leftrightarrow (A\phi - \lambda {E})v = 0 \Leftrightarrow \Ker(\phi - \lambda {E}) \neq \{0\}
+	\Leftrightarrow \det(\phi - \lambda {E}) = 0 \Leftrightarrow \chi_\phi(\lambda) = 0.$
+\end{proof}
+\begin{Statement}
+	Если $\mathbb{F} = \mathbb{C}, \dim V > 0$, то любой линейный оператор собственный вектор.
+\end{Statement}
+\begin{proof}
+	Пусть $\phi: V \to V$ -- линейный оператор. У него существует характеристический многочлен $\chi_\phi(x)$. Тогда по основной теореме алгебры у $\chi_\phi(x)$ есть корень $t_0$ -- собственное значение $\phi$, следовательно существует и собственный вектор $v_0$  с собственным значением $t_0$.
+\end{proof}
+\begin{Examples}
+	Для линейного оператора $\phi = \begin{pmatrix}
+    0& -1 \\
+    1& 0
+    \end{pmatrix}$
+    (поворот на $90^\circ$ градусов против часовой стрелки относительно начала координат), характеристический многочлен имеет вид: $\chi_\phi(x) = t^2+1$.
+    \\ При $\mathbb{F}  = \mathbb{R} \Rightarrow$ собственных значений нет.
+    \\ При $\mathbb{F} = \mathbb{C} \Rightarrow$ собственные значения $\pm i$.
+\end{Examples}
+\begin{Def}
+	Пусть $\lambda$ -- собственное значение $\phi$, тогда $V_\lambda = \{v \ in V \; | \; \phi v = \lambda v\}$ -- собственное подпространство (пространство, состоящее из собственных векторов с собственным значением $\lambda$ и нуля).
+\end{Def}
+\begin{Def}
+	$\dim V_\lambda$ -- геометрическая кратность собственного значения $\lambda$.
+\end{Def}
+\begin{Def}
+	Если $k$ -- кратность корня (определение см. выше, $(x - a_k)^k$), то $k$ -- алгебраическая кратность корня.
+\end{Def}
+\begin{Statement}
+	Геометрическая кратность не больше алгебраической кратности.
+\end{Statement}
+\begin{proof}
+	Зафиксируем базис $u_1, \ldots, u_p$ в пространстве $V_\lambda (p = \dim{V_\lambda})$. Дополним базис $u_1, \ldots, u_p$ до базиса $u_1, \ldots, u_p, u_{p+1}, \ldots, u_n$ пространства $V$. Матрица линейного оператора $\phi$ будет выглядеть следующим образом:
+	\\ (тут должна быть блочная матрица)
+	\[\chi_\phi(t) = (-1)^n \text{блочная матрица} = (-1)^n(\lambda - t)^p\dim(B - tE)\]
+	\\ $\chi_\phi(t)$ имеет корень кратности хотя бы $p$, следовательно геометрическая кратность $= p \leqslant$ алгебраическая кратность. 
+\end{proof}
+\begin{Examples} Когда алгебраическая кратность больше геометрической. Для линейного оператора $\phi = \begin{pmatrix}
+    2& 1 \\
+    0& 2
+    \end{pmatrix}
+    \\ V_2 = <e_1> \Rightarrow \text{геом. кратность} = 1, \chi_\phi(t) = (t-2)^2 \Rightarrow \text{алг. кратность} = 2.$
+\end{Examples}
+\begin{Def}
+	Пусть $\{U_1, \ldots, U_k \subseteq V\}$. Прямая сумма нескольких пространств -- это $U_1 + \ldots + U_k = \{u_1 + \ldots + u_k \; | \; u_i \in U_i \}$
+\end{Def}
+\begin{Task}
+	$U_1+\ldots + U_k$ -- подпространство.
+\end{Task}
+\begin{Def}
+	Сумма называет прямой, если  $U_1 + \ldots + U_k = 0 \Rightarrow U_1 = \ldots = U_k = 0.$
+\end{Def}
+\begin{Task}
+	Если $v \in U_1 \oplus \ldots \oplus U_k$, то существует и единственный набор $u_1 \in U_1, \ldots, u_k \in U_k: v = u_1 + \ldots + u_k.$
+\end{Task}
+\begin{Theorem}
+	Следующие условия эквивалентны:
+	\begin{enumerate}
+		\item Сумма $U_1 + \ldots + U_k$ -- прямая;
+		\item Если $\mathbb{e}_i$ -- базис $U_i (\mathbb{e}_i \cap \mathbb{e}_j)$, то $\mathbb{e} = \mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$ -- базис $U_1 + \ldots + U_k;$
+		\item $\dim(U_1 + \ldots + U_k) = \dim{U_1} + \ldots + \dim{U_k}.$
+	\end{enumerate}
+\end{Theorem}
+\begin{proof}
+	$(1) \Rightarrow (2).$ Сумма $U_1 + \ldots + U_k$ прямая. Покажем, что $\mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$ -- базис $U_1 + \ldots + U_k.$
+	\\ Если $v \in U_1 \oplus \ldots \oplus U_k$, то  $v = u_1 + \ldots + u_k = \{ u_i \in U_i\} = c^1_1e^1_1 + \ldots + c^1_{s_1}e^1_{s_1} + \ldots + c^k_1e^k_1 + \ldots c^k_{sk}e^k_{sk}$, но $\mathbb{e}$ -- базис.
+	\\ Пусть существует два представления, тогда вычтем из одного второе. По определению прямой суммы каждый вектор равен нулю, следовательно коэффициенты при них равны.
+	\\ $(2) \Rightarrow (1).$ Пусть $\mathbb{e} = \mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$ -- базис $U_1 + \ldots + U_k$. Пусть $0 = u_1 + \ldots + u_k$. Разложим по базисам:
+	\\ $0 = c^1_1e^1_1 + \ldots + c^1_{s_1}e^1_{s_1} + \ldots + c^k_1e^k_1 + \ldots c^k_{sk}e^k_{sk}$, следовательно все коэффициенты равны $0$ и $u_1 = 0 = u_k.$
+	\\ $(2) \Rightarrow (3).$ Пусть $\mathbb{e} = \mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$ -- базис $U_1 + \ldots + U_k. \dim(U_1 + \ldots + U_k)  = \dim(\mathbb{e}) = \dim(\mathbb{e_1})+ \ldots + \dim(\mathbb{e_k}) = \dim(U_1) + \ldots + \dim(U_k).$
+	\\ $(3) \Rightarrow (2).$ Пусть $\dim(U_1 + \ldots + U_k) = \dim{U_1} + \ldots + \dim{U_k}.$
+	\\ $\mathbb{e}$ порождает сумму, следовательно из $\mathbb{e}$ можно выделить базис суммы:
+	\\ $\dim(U_1 + \ldots + U_k) \leqslant \dim(\mathbb{e}) \leqslant \dim(\mathbb{e_1})+ \ldots + \dim(\mathbb{e_k}) = \dim{U_1} + \ldots + \dim{U_k}.$
+ \end{proof}
+\end{document}
+
