@@ -1,6 +1,5 @@
 ﻿\input{header.tex}
 
-
 \begin{document}
 \renewcommand{\phi}{\varphi}
 
@@ -127,7 +126,8 @@
 \definecolor{ffqqqq}{rgb}{1.,0.,0.}
 \definecolor{qqqqff}{rgb}{0.,0.,1.}
 \definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{tikzpicture}
+[line cap=round,line join=round,x=1.0cm,y=1.0cm]
 \draw[->,color=black] (-6.325793656583929,0.) -- (8.562522298306716,0.);
 \foreach \x in {-6.,-5.,-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.,7.,8.}
 \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
@@ -160,7 +160,7 @@
     \end{enumerate}
 \end{Examples}
 \begin{Def}
-    Линейный оператор $\phi$ называется диагонализуемым, если $\exists$ базис $\mathbb{e}$ в $V\colon A(\phi, \mathbb{e})$ --- диагональна. 
+    Линейный оператор $\phi$ называется диагонализуемым, если $\exists$ базис $\mathbb{e}$ в $V\colon A(\phi, \mathbb{e})$ диагональна. 
 \end{Def}
 \begin{Suggestion}
     $\phi$ диагонализуем тогда и только тогда, когда в $V$ существует базис из собственных векторов.
