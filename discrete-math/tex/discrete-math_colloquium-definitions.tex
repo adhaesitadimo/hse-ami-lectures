@@ -55,7 +55,7 @@
 
 \begin{document}
 \title{Дискретная математика.\\ Коллоквиум.}
-\author{Лекторий ПМИ ФКН 2015-2016\\ Определения 1 и 2: Вельдяйкин Николай и Бубнова Валерия \\ Определения 3 и 4, Вероятность и Машины Тьюринга: Гринберг Вадим}
+\author{Лекторий ПМИ ФКН 2015-2016\\ Определения 1 и 2: Вельдяйкин Николай и Бубнова Валерия \\ Определения 3 и 4, Вероятность и Машины Тьюринга: Гринберг Вадим \\ Дополнение 10: Вельдякин Николай}
 \date{16-21 марта 2016}
 
 \maketitle
@@ -307,9 +307,23 @@ $x_1, \ldots ,x_n, s_1 := \lnot x_1, s_2 = \lnot x_2, s_3 := x_1 \wedge s_2, s_4
     \item Дизъюнкция, инверсия
     \item Конъюнкция, инверсия
     \item Импликация, инверсия
-    \item Базис Жегалкина
+    \item Базис Жегалкина $\lbrace 	1, \oplus, \vee \rbrace$
     \item Стрелка Пирса
+    \begin{enumerate}
+        \item $0 \darr 0 = 1, 0 \darr 1 = 0, 1 \darr 0 = 0, 1 \darr 1 = 0$
+        \item $X \darr X \equiv \neg X$  — отрицание
+        \item $\left( {X \darr X} \right) \darr \left( {Y \darr Y } \right) \equiv {X  \wedge Y }$  — конъюнкция
+        \item $\left( {X \darr Y} \right) \darr \left( {X \darr Y} \right) \equiv X \vee Y$  — дизъюнкция
+        \item $\left( \left( {X \darr X } \right) \darr Y \right) \darr \left( \left( {X \darr X } \right) \darr Y \right) = X \rarr Y$  — импликация
+    \end{enumerate}
     \item Штрих Шеффера
+    \begin{enumerate}
+        \item 0 \| 0 = 1, 0 | 1 = 1, 1 | 0 = 1, 1 | 1 = 0
+        \item X\,|\,X  = \neg X  — отрицание
+        \item \left( {X \,|\,X } \right)\,|\,\left( {Y \,|\,Y } \right) = X \vee Y  — дизъюнкция
+        \item \left( {X \,|\,Y } \right)\,|\,\left( {X \,|\,Y } \right) = \left( {X  \wedge Y } \right)  — конъюнкция
+        \item X \,|\, \neg X  — константа 1
+    \end{enumerate}
 \end{enumerate}
 
 Примеры неполных базисов:
