@@ -32,8 +32,6 @@ with open('temp.tex', 'w', encoding="utf8") as temp:
         with open(lecture_name, 'r', encoding='utf8') as lecture:
             temp_lines = lecture.readlines()
             for line in temp_lines[3:-1]:
-                #if r'\begin{document}' in line or r'\end{document}' in line:
-                #    continue
                 temp_line = line.replace('section*', 'section')
                 temp.write(temp_line)
 
