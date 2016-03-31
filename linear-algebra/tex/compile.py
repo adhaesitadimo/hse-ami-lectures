@@ -48,12 +48,18 @@ os.chdir('..')
 for file in os.listdir('./'):
     if file == 'linear-algebra_all_lectures.pdf':
         os.remove(os.path.join('./', file))
-
 os.rename('./tex/temp.pdf', 'linear-algebra_all_lectures.pdf')
+
+for elem in os.listdir('./tex/'):
+    if os.path.isfile(os.path.join('./', elem)):
+        if elem.startswith('linear-algebra') and elem.endswith('.pdf'):
+            if elem in os.listdir('./'):
+                os.remove(os.path.join('./', elem))
+                os.rename('./tex/'+elem, elem)
 os.chdir('tex')
 
 # Removing the litter
-pattern = 'temp*'
 for file in os.listdir('./'):
-    if re.search(pattern, file):
+    if not (file.endswith('.tex') or file.endswith('.py')):
         os.remove(os.path.join('./', file))
+os.remove('./temp.tex')
