@@ -63,43 +63,56 @@ V_\lambda(\phi) = \ker\phi_\lambda \subset \ker\phi^2_\lambda \subset \ldots \su
  $$ \dim{V_{\lambda}(\phi)} = k_1 < k_2 < \ldots < k_m =  \dim{V^{\lambda}(\phi)}.
  $$
  
- Будем обозначать как $\limref{\phi}{V}$ отображение, ограниченное на пространстве $V$.
+ Будем обозначать как $\limref{\phi}{V}$ ограничение линейного оператора на пространство $V$.
  
 \begin{Suggestion}\
 	\begin{enumerate}
-		\item Характерестический многочлен линейного отображения $\phi \; \vline_{V^{\lambda}(\phi)}$ равен $(t - \lambda)^{k_m}$.
-		\item Если $\mu \neq \lambda$, то линейный оператор $\phi - \mu \id$ невырожден на  		$V^{\lambda}(\phi)$.
+		\item Характеристический многочлен линейного отображения $\phi \; \vline_{V^{\lambda}(\phi)}$ равен $(t - \lambda)^{k_m}$.
+		\item Если $\mu \neq \lambda$, то линейный оператор $\phi - \mu \id$ невырожден на  $V^{\lambda}(\phi)$.
 	\end{enumerate}
 \end{Suggestion}
 
 \begin{proof}
+	Напомним, что $k_i = \dim \ker \phi^i_\l$, для $i = 1, \ldots, m$. Пусть также $k_0 = 0$.
+	
 	Выберем базис $\mathbb{e} = (e_1, \ldots, e_{k_m})$ в $V^{\lambda}(\phi)$ так, чтобы
 	$(e_1, \ldots, e_{k_i})$ также был базисом в  $\ker\phi^{i}_\lambda$. Тогда:
 	\begin{gather*}
 	A(\limref{\phi_\l}{V^\l(\phi)}, \e) = 
-	\begin{matrix}
-	  		 & k_1 & k_2 - k_1 & \ldots & k_m - k_{m - 1}\\
-	  		k_1 & 0 & * & \ldots & * \\
-			k_2 - k_1 & 0 & 0 & \ldots & * \\
-	  		\vdots &\vdots &\ddots &\vdots\\
-	  		k_m - k_{m - 1} & 0 & 0 &\ldots & *
-	\end{matrix} 	\quad (*)
+	\begin{pmatrix}
+	  0 & * & * & \ldots & * \\
+	  0 & 0 & * & \ldots & * \\
+	  \vdots &\vdots &\ddots & \ddots & \vdots \\
+	  0 & 0 & \ldots & 0 & * \\
+	  0 & 0 &\ldots & 0 & 0
+	\end{pmatrix}, \quad \text{где } a_{ij} \in \Mat_{(k_i - k_{i - 1}) \times (k_j - k_{j - 1})}
 	\end{gather*}
+	
 	Но тогда:
 	\begin{gather*}
-	A(\limref{\phi}{V^\l(\phi)}, \e) = A(\limref{\phi_\l}{V^\l(\phi)}, \e) =
+	A(\limref{\phi}{V^\l(\phi)}, \e) = A(\limref{\phi_\l}{V^\l(\phi)}, \e) + \l E =
 	\begin{pmatrix}
   		A_1 & * & * & \ldots & * \\
-  		0 & A_1 & * & \ldots & * \\
-		0 & 0 & A_3 & \ldots & * \\
-  		\vdots &\vdots &\ddots &\vdots\\
-  		0 & 0 & 0 &\ldots & A_n
- 	\end{pmatrix},
+  	    0 & A_2 & * & \ldots & * \\
+  		\vdots &\vdots &\ddots & \ddots & \vdots \\
+  		0 & 0 & \ldots & A_{m-1} & * \\
+  		0 & 0 &\ldots & 0 & A_m
+ 	\end{pmatrix}, \quad \text{где } A_i = \lambda E_{k_i} \quad (*)
 	\end{gather*}
-	где $A_i = \lambda E$. Следовательно, характеристический многочлен линейного отображения $\limref{\phi}{V^\l(\phi)}$ равен $(t - \lambda)^{k_m}$.
+	А значит, характеристический многочлен линейного отображения $\limref{\phi}{V^\l(\phi)}$ равен $(t - \lambda)^{k_m}$.
 	
-	Матрица $A(\limref{(\phi - \mu\id)}{V^\l(\phi)}, \e) = (\limref{\phi_\l}{V^\l(\phi)}, \e) - \mu\id$ имеет вид $(*)$, где $A_i = (\lambda - \mu)\id$. Следовательно,
-	$\det(\limref{(\phi - \mu \id)}{V^\l(\phi)}) = (\lambda - \mu)^{k_m} \neq 0$, то есть линейный оператор невырожден.
+	Теперь докажем невырожденность линейного оператора $(\phi - \mu\id)$ при $\mu \neq \l$.
+	
+	Рассмотрим матрицу ограничения этого оператора на корневое подпространство:
+	$$
+	A(\limref{(\phi - \mu \id)}{V^\l(\phi)}, \e) = A(\limref{\phi}{V^\l(\phi)}, \e) - \mu E.
+	$$
+	
+	Она имеет вид $(*)$, где $A_i = (\lambda - \mu)E_{k_i}$. Следовательно,
+	$$
+	\det(\limref{(\phi - \mu \id)}{V^\l(\phi)}) = (\lambda - \mu)^{k_m} \neq 0.
+	$$
+	Что и означает, что линейный оператор невырожден.
 \end{proof}
 
 \begin{Suggestion}
