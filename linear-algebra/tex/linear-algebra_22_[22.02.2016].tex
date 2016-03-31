@@ -51,6 +51,8 @@ $$
 	Кратностью корня $a_i$ называется число $k_i$ такое, что в многочлене \\$b_n(x - a_1)^{k_1}\ldots(x - a_s)^{k_s}$ множитель $(x - a_i)$ имеет степень $k_i$.
 \end{Def}
 
+\subsection*{Собственные значения и характеристический многочлен}
+
 \begin{Def}
 	Пусть $V$ --- конечномерное векторное пространство над полем $\mathbb{F}$. Рассмотрим линейный оператор $\phi: V \to V$. Тогда характеристический многочлен $\phi$ имеет вид:
 	\begin{gather*}
@@ -99,6 +101,8 @@ $$
     \\ При $\mathbb{F} = \mathbb{C} \Rightarrow$ собственные значения $\pm i$.
 \end{Examples}
 
+\subsection*{Геометрическая и алгебраическая кратности}
+
 \begin{Def}
 	Пусть $\lambda$ --- собственное значение $\phi$, тогда $V_\lambda = \{v \in V \; | \; \phi(v) = \lambda v\}$ --- собственное подпространство, то есть пространство, состоящее из собственных векторов с собственным значением $\lambda$ и нуля.
 \end{Def}
@@ -119,29 +123,26 @@ $$
 	Зафиксируем базис $u_1, \ldots, u_p$ в пространстве $V_\lambda$, где $p = \dim{V_\lambda}$. Дополним базис $u_1, \ldots, u_p$ до базиса $u_1, \ldots, u_p, u_{p+1}, \ldots, u_n$ пространства $V$. Матрица линейного оператора $\phi$ будет выглядеть следующим образом:
 	\begin{gather*}
 	A_\phi = 
-		\begin{pmatrix}
-		\lambda E
-		& \vline & 
-		A \\
-		\hline
-		0
-		& \vline & 
-    	B
-		\end{pmatrix}, \quad \lambda E \in M_p,\ A \in M_{n-p}
+		\begin{pmatrix*}
+		\begin{array}{c|c}
+		\l E & A \\ \hline
+		0 & B
+		\end{array}
+		\end{pmatrix*}, \quad \lambda E \in M_p,\ A \in M_{n-p}
 	\end{gather*}
 	Тогда характеристический многочлен будет следующим:
 	\begin{gather*}
 	\chi_\phi(t) = (-1)^n \det (A_\phi - t) = 
 	\begin{pmatrix}
+	\begin{array}{c|c}
 	\begin{matrix}
 	\lambda - t &  & 0 \\
 	 & \ddots &  \\
 	0 &  & \lambda - t
 	\end{matrix}
-	& \vline &
-	A \\
-	\hline
-	0 & \vline & b - tE
+	& A \\ \hline
+	0 & b - tE
+	\end{array}
 	\end{pmatrix}
 	 = (-1)^n(\lambda - t)^p\dim(B - tE)
 	\end{gather*}
@@ -158,6 +159,8 @@ $$
     
     $\chi_\phi(t) = (t-2)^2 \Rightarrow$ алгебраическая кратность равна 2.
 \end{Examples}
+
+\subsection*{Сумма и прямая сумма нескольких подпространств}
 
 \begin{Def}
 	Пусть $U_1, \ldots, U_k \subseteq V$ --- векторные пространства. Суммой нескольких пространств называется $U_1 + \ldots + U_k = \{u_1 + \ldots + u_k \; | \; u_i \in U_i \}$.
