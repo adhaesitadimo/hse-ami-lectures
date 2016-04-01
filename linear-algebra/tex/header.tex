@@ -23,7 +23,7 @@
 \usepackage{array}
 \usepackage{amsfonts}
 \usepackage{icomma}					% "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
-\usepackage{mathbbol}				% Для \mathbb со строчными буквами
+\usepackage{bbm}				% Для красивого (!) \mathbb с  буквами и цифрами
 
 % Номера формул
 \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
@@ -82,6 +82,7 @@
 \newtheorem*{Generalization}{Обобщение}
 \newtheorem*{Thedream}{Предел мечтаний}
 
+\renewcommand{\mathbb}{\mathbbm}
 \renewcommand{\Re}{\mathrm{Re\:}}
 \renewcommand{\Im}{\mathrm{Im\:}}
 \newcommand{\Arg}{\mathrm{Arg\:}}

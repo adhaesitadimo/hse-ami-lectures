@@ -5,75 +5,84 @@
 \section{Лекция 21 от 15.02.2016}
 
 \subsection*{Инвариантность и обратимость}
-Пусть $\phi\colon V \rightarrow V$ --- линейный оператор. $\mathbb{e}$ --- базис в $V$. 
+Пусть $\phi\colon V \rightarrow V$ --- линейный оператор, и $\mathbb{e}$ --- базис в $V$. 
+
 \begin{Designation}
     $A(\phi,\;\mathbb{e})$ --- матрица линейного оператора $\phi$ в базисе $\mathbb{e}$.
 \end{Designation}
-Если $\mathbb{e}' = (e_1', \ldots, e_n')$ --- ещё один базис, причём $(e_1', \ldots, e_n') = (e_1, \ldots, e_n)C$, где $C$ --- матрица перехода. $A = A(\phi,\; \mathbb{e})$, $A' = A(\phi,\; \mathbb{e}')$.
+
+Если $\mathbb{e}' = (e_1', \ldots, e_n')$ --- ещё один базис, причём $(e_1', \ldots, e_n') = (e_1, \ldots, e_n)C$, где $C$ --- матрица перехода, $A = A(\phi,\; \mathbb{e})$ и  $A' = A(\phi,\; \mathbb{e}')$.
 В прошлый раз мы доказали, что $A' = C^{-1}AC$.
+
 \begin{Consequence}
-    Величина $\det A$ не зависит от выбора базиса. 
+    Величина $\det A$ не зависит от выбора базиса. Обозначение: $\det\phi$.
 \end{Consequence}
+
 \begin{proof}
-    $A'$ --- матрица $\phi$ в другом базисе. Тогда получается
+    Пусть $A'$ --- матрица $\phi$ в другом базисе. Тогда получается, что:
     \begin{gather*}
-        \det A' = \det \left(C^{-1}AC\right) = \det C^{-1} \det A \det C = \det A \det C \cfrac{1}{\det C} = \det A
+        \det A' = \det \left(C^{-1}AC\right) = \det C^{-1} \det A \det C = \det A \det C \cfrac{1}{\det C} = \det A.
     \end{gather*}
 \end{proof}
+
 Заметим, что $\det A$ --- инвариант самого $\phi$. 
-\begin{Designation}
-    $\det\phi$
-\end{Designation}
+
 \begin{Def}
-    Две матрицы $A', A \in M_n(F)$ называются подобными, если $\exists C \in M_n(F), \det C \neq 0\colon A' = C^{-1}AC$
+    Две матрицы $A', A \in M_n(F)$ называются подобными, если существует такая матрица $C \in M_n(F), \det C \neq 0$, что $A' = C^{-1}AC$.
 \end{Def}
+
 \begin{Comment}
     Отношение подобия на $M_n$ является отношением эквивалентности. 
 \end{Comment}
+
 \begin{Suggestion}
-    Пусть $\phi \in L(V)$. Тогда эти условия эквивалентны
+    Пусть $\phi \in L(V)$. Тогда эти условия эквивалентны:
     \begin{enumerate}
-        \item $\Ker\phi = \{0\}$
-        \item $\Im \phi = V$
-        \item $\phi$ обратим (то есть биекция, изоморфизм)
-        \item $\det \phi = 0$
+        \item $\Ker\phi = \{0\}$;
+        \item $\Im \phi = V$;
+        \item $\phi$ обратим (то есть это биекция, изоморфизм);
+        \item $\det \phi \neq 0$.
     \end{enumerate}
 \end{Suggestion}
-\begin{proof}
-    \ 
+
+\begin{proof}\ 
     \begin{enumerate}
-        \item $\Leftrightarrow$ 2 --- следует из формулы $\dim V = \dim \Ker \phi + \dim \Im \phi$
-        \item $\Leftrightarrow$ 3 --- уже было
-        \item $\Leftrightarrow$ 4 --- уже было
+        \item $\Leftrightarrow$ 2 --- следует из формулы $\dim V = \dim \Ker \phi + \dim \Im \phi$.
+        \item $\Leftrightarrow$ 3 --- уже было.
+        \item $\Leftrightarrow$ 4 --- уже было.
     \end{enumerate}
 \end{proof}
+
 \begin{Def}
-    Линейный оператор $\phi$ называется вырожденным, если $\det \phi = 0$, и невырожденным, если $\det \phi \neq 0$
-\end{Def}
-\begin{Def} 
-    Подпространство $U \subset V$ называется инвариантным относительно $\phi$ (или $\phi$-инвариантным), если $\phi(U)\subset U$. То есть $\phi(u)\in U\ \forall u\in U$. 
+    Линейный оператор $\phi$ называется вырожденным, если $\det \phi = 0$, и невырожденным, если $\det \phi \neq 0$.
 \end{Def}
 
-\begin{Examples}
-    \ 
+\begin{Def} 
+    Подпространство $U \subset V$ называется инвариантным относительно $\phi$ (или $\phi$-инвариантным), если $\phi(U)\subset U$. То есть $\forall u\in U \colon \phi(u)\in U$. 
+\end{Def}
+
+\begin{Examples}\
     \begin{enumerate}
         \item $\{0\}, V$ --- они инвариантны для любого $\phi$.
         \item $\Ker\phi$ $\phi$-инвариантно, $\phi(\Ker\phi) = \{0\} \subset \Ker\phi$
         \item $\Im\phi$ тоже $\phi$-инвариантно, $\phi(\Im\phi)\subset \phi(V) = \Im \phi$.
     \end{enumerate}
 \end{Examples}
+
 Пусть $U\subset V$ --- $\phi$-инвариантное подпространство. Также пусть $(e_1, \ldots, e_n)$ --- базис в $U$. Дополним его до базиса $V\colon$ $\mathbb{e} = (e_1, \ldots, e_n)$. 
 \begin{gather}
     \underbrace{A(\phi,\;\mathbb{e})}_{\text{Матрица с углом нулей}} = \begin{pmatrix}
     B& C \\
     0& D
-    \end{pmatrix}\text{,  где $B\in M_k$}
+    \end{pmatrix}, \quad\text{где $B\in M_k$}
 \end{gather}
 Это нетрудно понять, если учесть, что $\phi(e_i)\in \langle e_1, \ldots, e_k\rangle,\ i=1,\dots, k$.
 Если $U = \Ker \phi$, то $B = 0$. Если $U = \Im \phi$, то $D = 0$. 
-\par Обратно, если в базисе $\mathbb{e}$ имеет такой вид вид, то $U = \langle e_1, \ldots e_k\rangle$ --- инвариантное подпространство. 
+
+Обратно, если матрица $A$ имеет в базисе $\mathbb{e}$ такой вид, то $U = \langle e_1, \ldots e_k\rangle$ --- инвариантное подпространство. 
+
 \begin{Generalization}
-    $V = U \oplus W$, где $U, W$ --- инвариантные подпространства, $(e_1, \ldots, e_k)$ --- базис $W$, тогда $\mathbb{e} = (e_1, \dots, e_n)$ --- базис $V$.
+    Пусть $V = U \oplus W$, где $U,\ W$ --- инвариантные подпространства, и $(e_1, \ldots, e_k)$ --- базис $W$. Тогда $\mathbb{e} = (e_1, \dots, e_n)$ --- базис $V$.
     \[  
         A(\phi,\; \mathbb{e}) = \begin{pmatrix}
             *& 0 \\
@@ -81,8 +90,11 @@
         \end{pmatrix}
     \]
 \end{Generalization}
+
 \begin{Generalization}
-     \[\begin{array}{cc}
+  \[
+  A(\phi, \mathbb{e}) = 
+  \begin{array}{cc}
   \arraycolsep=1.4pt
   \begin{pmatrix}
   * &0 &0 &\ldots &0\\
@@ -95,7 +107,7 @@
   k_1 \\ k_2 \\ k_3 \\ \vdots \\ k_s
   \end{matrix}
   \end{array}\]
-  Здесь $k_1, \ldots, k_s$ --- размеры квадратных блоков блочно-диагональной матрицы. $A(\phi,\; \mathbb{e})$ имеет такой вид тогда и только тогда, когда все подпространства
+  Здесь $k_1, \ldots, k_s$ --- размеры квадратных блоков блочно-диагональной матрицы. Матрица $A(\phi,\; \mathbb{e})$ имеет такой вид тогда и только тогда, когда:
   \begin{gather*}
       U_1 = \langle e_1, \ldots, e_{k_1}\rangle \\
       U_2 = \langle e_{k_1+1}, \ldots, e_{k_2} \rangle \\
@@ -103,24 +115,31 @@
       U_{k_s} = \langle e_{n-k_s+1}, \ldots, e_n \rangle
   \end{gather*}
 \end{Generalization}
+
 \begin{Thedream}
-    Найти такой базис, в котором матрица линейного оператора была бы диагональной. Но такое возможно не всегда
+    Найти такой базис, в котором матрица линейного оператора была бы диагональной. Но такое возможно не всегда.
 \end{Thedream}
 
 \subsection*{Собственные векторы и собственные значения}
 
-Пусть $\phi\in L(V)$
+Пусть $\phi\in L(V)$.
+
 \begin{Def}
     Ненулевой вектор $v\in V$ называется \textit{собственным} для $V$, если $\phi(v) = \lambda v$ для некоторго $\lambda \in F$. При этом число $\lambda$ называется собственным значением линейного оператора $\phi$, отвечающим собственному вектору $v$.
 \end{Def}
+
 \begin{Suggestion}
-    $0 \neq v \in V$ --- собственный вектор в $V$ тогда и только тогда, когда $\langle v \rangle$ является $\phi$-инвариантным подпространством
+    Вектор $v \in V,\ v \neq 0$ --- собственный вектор в $V$ тогда и только тогда, когда линейная оболочка $\langle v \rangle$ является $\phi$-инвариантным подпространством
 \end{Suggestion}
 
+\begin{proof}\
+\begin{itemize}
+\item $[\Rightarrow]$ $\phi(v) = \lambda v \Rightarrow \langle v \rangle = \{kv\ |\ k\in F\}$. Тогда $\phi(kv) = \lambda k v \in \langle v \rangle.$
 
-\begin{proof} $[\Rightarrow]$ $\phi(v) = \lambda v \Rightarrow \langle v \rangle = \{kv\ |\ k\in F\}$. Тогда $\phi(kv) = \lambda k v \in \langle v \rangle$.
-    [$\Leftarrow$] $\phi(V) \in \langle v \rangle \Rightarrow \exists \lambda \in F\colon \phi(v) = \lambda v$
+\item $[\Leftarrow]$ $\phi(V) \in \langle v \rangle \Rightarrow \exists \lambda \in F\colon \phi(v) = \lambda v$.
+\end{itemize}
 \end{proof}
+
 \begin{Examples}
     \begin{enumerate}
         \item $V = \mathbb{R}^2$, $\phi$ --- ортогональная проекция на прямуую $l$. \\
@@ -158,22 +177,22 @@
             \item $\alpha = \pi + 2\pi k$. Любой ненулевой вектор собственный. $\lambda = -1$.
             \item $\alpha \neq \pi k$. Собственных векторов нет.
         \end{itemize}
-        \item $V = P_n(F)$ --- многочлены степени. $\phi = \Delta\colon f \rightarrow f'$. Тогда $0 \neq f$ --- собственный вектор тогда, и только тогда, когда $f = const$ 
+        \item $V = P_n(F)$ --- многочлены степени  $n$, $\phi = \Delta\colon f \rightarrow f'$. Тогда $0 \neq f$ --- собственный вектор тогда, и только тогда, когда $f = const$.
     \end{enumerate}
 \end{Examples}
 
 \subsection*{Диагонализуемость}
 \begin{Def}
-    Линейный оператор $\phi$ называется диагонализуемым, если $\exists$ базис $\mathbb{e}$ в $V\colon A(\phi, \mathbb{e})$ диагональна. 
+    Линейный оператор $\phi$ называется диагонализуемым, если существует базис $\mathbb{e}$ в $V$ такой, что $A(\phi, \mathbb{e})$ диагональна. 
 \end{Def}
 \begin{Suggestion}[Критерий диагонализуемости]
-    $\phi$ диагонализуем тогда и только тогда, когда в $V$ существует базис из собственных векторов.
+    Отображение $\phi$ диагонализуемо тогда и только тогда, когда в $V$ существует базис из собственных векторов.
 \end{Suggestion}
 
 \begin{proof}
-    $\mathbb{e}$ --- базис $V$. $A = diag(\lambda_1, \ldots, \lambda_n) \Leftrightarrow \phi(e_i) = \lambda_i e_i$, что эквивалентно тому, что все векторы собственные.
+    Пусть $\mathbb{e}$ --- базис $V$. Тогда $A = \diag(\lambda_1, \ldots, \lambda_n)$, что равносильно $\phi(e_i) = \lambda_i e_i$. Это и означает, что все векторы собственные.
 \end{proof}
-В примерах выше
+В примерах выше:
 \begin{enumerate}
     \item $\phi$ диагонализуем. $e_1 \in l,\ e_2 \perp l$. Тогда матрица примет вид $A = \begin{pmatrix}
         1 &0 \\
@@ -184,18 +203,26 @@
 \end{enumerate}
 
 \subsection*{Собственное подпространство}
-Пусть $\phi\in L(V)$, $x\in F$. 
+Пусть $\phi\in L(V)$, $\lambda\in F$. 
+
 \begin{Def}
-    Множество $V_{\lambda}(\phi) = \{v\in V\ |\ \phi(v) = \lambda V\}$ называется собственным подпространством линейного оператора, отвечающим собственному значению $\lambda$. Лектор предлагает доказать то, что это подпротранство, в качестве упражнения.
+    Множество $V_{\lambda}(\phi) = \{v\in V\ |\ \phi(v) = \lambda V\}$ называется собственным подпространством линейного оператора, отвечающим собственному значению $\lambda$.
 \end{Def}
+
+\begin{Task}
+Доказать, что $V_\lambda(\phi)$ --- действительно подпространство.
+\end{Task}
+
 \begin{Suggestion}
-    $V_\lambda(\phi) = \Ker(\phi - \lambda\id)$
+$V_\lambda(\phi) = \Ker(\phi - \lambda\id)$.
 \end{Suggestion}
 \begin{proof}
-    $v \in V_{\lambda}(\phi) \Leftrightarrow \phi(v) = \lambda v \Leftrightarrow \phi(v) - \lambda v = 0 \Leftrightarrow (\phi - \lambda \id)(v) = 0  \Leftrightarrow v \in \Ker(\phi - \lambda \id)$
+    $$
+    v \in V_{\lambda}(\phi) \Leftrightarrow \phi(v) = \lambda v \Leftrightarrow \phi(v) - \lambda v = 0 \Leftrightarrow (\phi - \lambda \id)(v) = 0  \Leftrightarrow v \in \Ker(\phi - \lambda \id)
+    $$
 \end{proof}
 \begin{Consequence}
-    $v_{\lambda}(\phi) \neq 0 \Leftrightarrow \det(\phi - \lambda \id) = 0$
+    Собственное подпространство $V_{\lambda}(\phi) \neq \{0\}$ тогда и только тогда, когда \\$\det(\phi - \lambda \id) = 0$.
 \end{Consequence}
 \begin{Def}
     Многочлен $\chi_{\phi}(t) = (-1)^n\det(\phi - t \id)$ называется характеристическим.
