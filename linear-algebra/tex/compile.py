@@ -51,11 +51,10 @@ for file in os.listdir('./'):
 os.rename('./tex/temp.pdf', 'linear-algebra_all_lectures.pdf')
 
 for elem in os.listdir('./tex/'):
-    if os.path.isfile(os.path.join('./', elem)):
-        if elem.startswith('linear-algebra') and elem.endswith('.pdf'):
-            if elem in os.listdir('./'):
-                os.remove(os.path.join('./', elem))
-                os.rename('./tex/'+elem, elem)
+    if elem.startswith('linear-algebra') and elem.endswith('.pdf'):
+        if elem in os.listdir('./'):
+            os.remove(os.path.join('./', elem))
+        os.rename('./tex/'+elem, elem)
 os.chdir('tex')
 
 # Removing the litter
