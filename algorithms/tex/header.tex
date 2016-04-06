@@ -50,9 +50,16 @@
 	{0pt}
 	{}
 
+% Поправленный вид lstlisting
+\lstset { %
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
 % Теоремы и утверждения. В комменте указываем номер лекции, в которой это используется.
 \newtheorem*{hanoi_recurrent}{Свойство} % Лекция 1
 \let\epsilent\varepsilon                % Лекция 8
+\DeclareMathOperator{\rk}{rank}         % Лекция 20
 
 % Информация об авторах
 \author{Группа лектория ФКН ПМИ 2015-2016 \\

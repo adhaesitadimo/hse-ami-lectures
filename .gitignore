@@ -5,3 +5,5 @@
 *.synctex.gz
 
 algorithms/.ropeproject/
+
+*.bcf
