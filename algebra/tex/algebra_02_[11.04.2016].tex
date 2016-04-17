@@ -245,12 +245,12 @@
 %\thispagestyle{empty}
 %
 \centerline{\large \bf Лекции курса \guillemotleft
-Алгебра\guillemotright{}, лекторы И.\,В.~Аржанцев и Р.\,С.~Авдеев}
+Алгебра\guillemotright{}, лектор Р.\,С.~Авдеев}
 
 \smallskip
 
 \centerline{\large ФКН НИУ ВШЭ, 1-й курс ОП ПМИ, 4-й модуль,
-2014/2015 учебный год}
+2015/2016 учебный год}
 
 
 \bigskip
@@ -398,29 +398,6 @@ $\varphi(a^{-1})=\varphi(a)^{-1}$ для любого $a\in G$.
 изоморфные группы считаются \guillemotleft
 одинаковыми\guillemotright{}.
 
-\begin{theorem}
-\begin{enumerate}
-\item[(а)]
-Всякая бесконечная циклическая группа $G$ изоморфна группе
-$(\ZZ,+)$.
-\item[(б)]
-Всякая циклическая группа порядка $n$ изоморфна группе $(\ZZ_n,+)$.
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-Пусть $G = \langle g \rangle$. Тогда в первом случае изоморфизм
-устанавливает отображение $\langle g \rangle \to \ZZ$, $g^k \mapsto
-k$, а~во втором~--- отображение $\langle g \rangle \to \ZZ_n$, $g^k
-\mapsto k\, (\text{mod}\, n)$.
-\end{proof}
-
-\begin{example}
-Отображение $\varphi\colon\RR\to\RR_{>0}$, $a\mapsto e^a$,
-устанавливает изоморфизм между группами $(\RR,+)$ и
-$(\RR_{>0},\times)$.
-\end{example}
-
 \begin{definition}
 С каждым гомоморфизмом групп $\varphi\colon G\to F$ связаны его {\it
 ядро}
@@ -509,35 +486,6 @@ $S^1$, рассматриваемой как подгруппа в~$F$, сост
 чисел с модулем~$1$.
 \end{example}
 
-\begin{definition}
-{\it Центр} группы $G$~--- это подмножество
-$$
-Z(G)=\{a\in G \mid ab=ba \ \text{для всех} \ b\in G\}.
-$$
-\end{definition}
-
-Ясно, что группа $G$ абелева тогда и только тогда, когда $Z(G)=G$.
-
-\begin{proposition}
-Центр $Z(G)$ является нормальной подгруппой группы $G$.
-\end{proposition}
-
-\begin{proof}
-Сначала докажем, что $Z(G)$~--- подгруппа в~$G$. Для этого надо
-показать, что $ab^{-1}\in Z(G)$ для любых $a, b \in Z(G)$. В~самом
-деле, для произвольного элемента $g \in G$ имеем
-$$
-ab^{-1}g = ab^{-1}(g^{-1})^{-1} = a (g^{-1}b)^{-1} = a(bg^{-1})^{-1}
-= a (g^{-1})^{-1}b^{-1} = agb^{-1} = gab^{-1}.
-$$
-Далее, если $a \in Z(G)$ и $g\in G$, то
-$$
-g^{-1}agb=g^{-1}gab=ab=ba=bag^{-1}g=bg^{-1}ag
-$$
-для всех $b\in G$. Значит, $g^{-1}ag\in Z(G)$ и подгруппа $Z(G)$
-нормальна.
-\end{proof}
-
 Определим ещё одну важную конструкцию, позволяющую строить новые
 группы из имеющихся.
 
@@ -566,61 +514,72 @@ $(e_{G_1},\ldots,e_{G_m})$ и для каждого элемента $(g_1,\ldot
 \times G_m| = |G_1| \cdot \ldots \cdot |G_m|$.
 \end{remark}
 
-Следующий результат связывает конструкции факторгруппы и прямого
-произведения.
+\begin{definition}
+Группа $G$ \textit{раскладывается в прямое произведение} своих подгрупп $H_1, \ldots, H_m$, если отображение $H_1 \times \ldots \times H_M \rightarrow G$, $(h_1, \ldots, h_m) \mapsto h_1 \cdot \ldots \cdot h_m$ является изоморфизмом.
+\end{definition}
 
-{\bf Теорема о факторизации по сомножителям}. \ Пусть $H_1, \ldots,
-H_m$~--- нормальные подгруппы в группах $G_1, \ldots, G_m$
-соответственно. Тогда $H_1 \times \ldots \times H_m$~--- нормальная
-подгруппа в $G_1 \times \ldots \times G_m$ и имеет место изоморфизм
-групп
+\begin{example}
+$G = G_1 \times \ldots \times G_m$, где 
 $$
-(G_1 \times \ldots \times G_m) / (H_1 \times \ldots \times H_m)
-\cong G_1 / H_1 \times \ldots \times G_m / H_m.
+G_i := \{ e, \ldots, e, g, e, \ldots, e \mid g \in G_i \}.
 $$
+\end{example}
 
-\begin{proof}
-Прямая проверка показывает, что $H_1\times\ldots\times H_m$~---
-нормальная подгруппа в $G_1\times\ldots\times G_m$. Требуемый
-изоморфизм устанавливается отображением
-$$
-(g_1,\ldots,g_m)(H_1\times\ldots\times H_m)\mapsto
-(g_1H_1,\ldots,g_mH_m).
-$$
-\end{proof}
-
-\begin{theorem}
-Пусть $n=ml$~--- разложение натурального числа $n$ на два взаимно
-простых множителя. Тогда имеет место изоморфизм групп
-$$
-\ZZ_n\cong \ZZ_m\times\ZZ_l.
-$$
-\end{theorem}
-
-\begin{proof}
-Рассмотрим отображение
-$$
-\varphi\colon \ZZ_n\to \ZZ_m\times\ZZ_l, \quad k \ (\text{mod}\ n)
-\mapsto (k\ (\text{mod}\ m), k\ (\text{mod}\  l)).
-$$
-Поскольку $m$ и $l$ делят~$n$, отображение $\varphi$ определено
-корректно. Ясно, что $\varphi$~--- гомоморфизм. Далее, если $k$
-переходит в нейтральный элемент $(0,0)$, то $k$ делится и на $m$, и
-на $l$, а~значит, делится на $n$ в силу взаимной простоты $m$ и~$l$.
-Отсюда следует, что гомоморфизм $\varphi$ инъективен. Поскольку
-множества $\ZZ_n$ и $\ZZ_m\times\ZZ_l$ содержат одинаковое число
-элементов, отображение $\varphi$ биективно.
-\end{proof}
-
-\begin{corollary} \label{corpr}
-Пусть $n \geqslant 2$~--- натуральное число и $n=p_1^{k_1}\ldots
-p_s^{k_s}$~--- его разложение в произведение простых множителей
-\textup(где $p_i \ne p_j$ при $i \ne j$\textup). Тогда имеет место
-изоморфизм групп
-$$
-\ZZ_n\cong\ZZ_{p_1^{k_1}}\times\ldots\times\ZZ_{p_s^{k_s}}.
-$$
-\end{corollary}
+%Следующий результат связывает конструкции факторгруппы и прямого
+%произведения.
+%
+%{\bf Теорема о факторизации по сомножителям}. \ Пусть $H_1, \ldots,
+%H_m$~--- нормальные подгруппы в группах $G_1, \ldots, G_m$
+%соответственно. Тогда $H_1 \times \ldots \times H_m$~--- нормальная
+%подгруппа в $G_1 \times \ldots \times G_m$ и имеет место изоморфизм
+%групп
+%$$
+%(G_1 \times \ldots \times G_m) / (H_1 \times \ldots \times H_m)
+%\cong G_1 / H_1 \times \ldots \times G_m / H_m.
+%$$
+%
+%\begin{proof}
+%Прямая проверка показывает, что $H_1\times\ldots\times H_m$~---
+%нормальная подгруппа в $G_1\times\ldots\times G_m$. Требуемый
+%изоморфизм устанавливается отображением
+%$$
+%(g_1,\ldots,g_m)(H_1\times\ldots\times H_m)\mapsto
+%(g_1H_1,\ldots,g_mH_m).
+%$$
+%\end{proof}
+%
+%\begin{theorem}
+%Пусть $n=ml$~--- разложение натурального числа $n$ на два взаимно
+%простых множителя. Тогда имеет место изоморфизм групп
+%$$
+%\ZZ_n\cong \ZZ_m\times\ZZ_l.
+%$$
+%\end{theorem}
+%
+%\begin{proof}
+%Рассмотрим отображение
+%$$
+%\varphi\colon \ZZ_n\to \ZZ_m\times\ZZ_l, \quad k \ (\text{mod}\ n)
+%\mapsto (k\ (\text{mod}\ m), k\ (\text{mod}\  l)).
+%$$
+%Поскольку $m$ и $l$ делят~$n$, отображение $\varphi$ определено
+%корректно. Ясно, что $\varphi$~--- гомоморфизм. Далее, если $k$
+%переходит в нейтральный элемент $(0,0)$, то $k$ делится и на $m$, и
+%на $l$, а~значит, делится на $n$ в силу взаимной простоты $m$ и~$l$.
+%Отсюда следует, что гомоморфизм $\varphi$ инъективен. Поскольку
+%множества $\ZZ_n$ и $\ZZ_m\times\ZZ_l$ содержат одинаковое число
+%элементов, отображение $\varphi$ биективно.
+%\end{proof}
+%
+%\begin{corollary} \label{corpr}
+%Пусть $n \geqslant 2$~--- натуральное число и $n=p_1^{k_1}\ldots
+%p_s^{k_s}$~--- его разложение в произведение простых множителей
+%\textup(где $p_i \ne p_j$ при $i \ne j$\textup). Тогда имеет место
+%изоморфизм групп
+%$$
+%\ZZ_n\cong\ZZ_{p_1^{k_1}}\times\ldots\times\ZZ_{p_s^{k_s}}.
+%$$
+%\end{corollary}
 
 
 \bigskip
