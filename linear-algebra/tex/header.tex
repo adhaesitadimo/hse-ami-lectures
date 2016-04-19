@@ -6,6 +6,11 @@
 \usepackage[T2A]{fontenc}			% кодировка
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
 \usepackage[english,russian]{babel}	% локализация и переносы
+%\usepackage[parfill]{parskip}       % без отсупов в начале абзаца
+
+%% Отступы между абзацами и в начале абзаца 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\medskipamount}
 
 %% Изменяем размер полей
 \usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
@@ -96,8 +101,12 @@
 \newcommand{\rk}{\mathrm{rk}\:}
 \newcommand{\diag}{\mathrm{diag}}
 
+\renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 \newcommand{\e}{\mathbb{e}}
 \renewcommand{\l}{\lambda}
 \renewcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
+
+\newcommand{\vvector}[1]{\begin{pmatrix}{#1}_1 \\\vdots\\{#1}_n\end{pmatrix}}
+\renewcommand{\vector}[1]{({#1}_1, \ldots, {#1}_n)}
