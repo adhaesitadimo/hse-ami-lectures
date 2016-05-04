@@ -21,20 +21,18 @@ with open('temp.tex', 'w', encoding="utf8") as temp:
     lectures = []
 
     for elem in os.listdir('./'):
-        if os.path.isfile(os.path.join('./', elem)):
-            if elem.startswith('linear-algebra'):
-                if elem.endswith('.tex'):
-                    lectures.append(elem)
+        if elem.startswith('linear-algebra') and elem.endswith('.tex'):
+            lectures.append(elem)
     lectures.sort()
 
     # Adding it to the temp file
     for lecture_name in lectures:
         with open(lecture_name, 'r', encoding='utf8') as lecture:
+            temp.write(r'\newpage')
             temp_lines = lecture.readlines()
             for line in temp_lines[3:-1]:
                 temp_line = line.replace('section*', 'section')
                 temp.write(temp_line)
-
     # Adding the final line
     temp.write(r'\end{document}')
 
