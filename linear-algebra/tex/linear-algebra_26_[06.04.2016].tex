@@ -46,7 +46,7 @@ $B' = C^TBC$.
 \begin{gather*}
 \begin{aligned}
 x = x_1e_1 + \ldots + x_ne_n = (e_1, \ldots, e_n)\vvector{x} \\
-x = x'_1e'_1 + \ldots + x'ne'_n = (e'_1, \ldots, e'_n) \vvector{x'}
+x = x'_1e'_1 + \ldots + x'_ne'_n = (e'_1, \ldots, e'_n) \vvector{x'}
 \end{aligned}
 \Longrightarrow
 \vvector{x} = C\vvector{x'}
@@ -147,7 +147,7 @@ $$
 \begin{gather*}
 Q_\beta(x + y) = \beta(x + y, x + y) = \beta(x, x) + \beta(x, y) + \beta(y, x) + \beta(y, y) = Q_\beta(x) + Q_\beta(y) + 2\beta(x, y) \\
 \Downarrow \\
-\beta(x, y) = \frac{1}{2}\left( Q_\beta(x + 1) - Q_\beta(x) - Q_\beta(y)  \right)
+\beta(x, y) = \frac{1}{2}\left( Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)  \right)
 \end{gather*}
 Полученная выше формула как раз и означает, что значения билинейной функции однозначно задаются соответствующей квадратичной функцией.
 \end{proof}
@@ -155,7 +155,7 @@ Q_\beta(x + y) = \beta(x + y, x + y) = \beta(x, x) + \beta(x, y) + \beta(y, x) +
 \begin{Comment}\
 \begin{enumerate}
 \item Билинейная функция $\sigma(x, y) = \frac{1}{2}(\beta(x, y) + \beta(y, x))$ называется симметризацией билинейной функции $\beta$. Причем если $B = B(\beta, \e)$ и $S = B(\sigma, \e)$, то $S = \frac{1}{2}(B + B^T)$.
-\item Симметричная билинейная функция $\beta(x, y) = \frac{1}{2}\left( Q_\beta(x + 1) - Q_\beta(x) - Q_\beta(y)  \right)$ называется поляризацией квадратичной функции $Q$.
+\item Симметричная билинейная функция $\beta(x, y) = \frac{1}{2}\left( Q_\beta(x + y) - Q_\beta(x) - Q_\beta(y)  \right)$ называется поляризацией квадратичной функции $Q$.
 \end{enumerate}
 \end{Comment}
 
