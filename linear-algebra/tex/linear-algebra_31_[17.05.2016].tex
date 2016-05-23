@@ -1,0 +1,111 @@
+\input{header.tex}
+
+\begin{document}
+\section{Лекция 30 от 11.05.2016}
+
+\subsection*{Самосопряжённые линейные операторы (продолжение)}
+
+Пусть $\mathbb{E}$ --- евклидово пространство, $\dim \mathbb{E} = n$, $\varphi \in L(\mathbb{E})$. Вспомним, что по определению сопряжённый линейный оператор это $\varphi^*\colon (x,\;\varphi(y)) = (\varphi^*(x),\; y)$.
+
+\par Вспомним также, что такое самосопряжённый оператор, это такой оператор $\varphi$, что $\varphi = \varphi^*$.
+
+\begin{Suggestion}
+	Пусть $\varphi = \varphi^*$. Если $U \subset \mathbb{E}$ --- подпространство --- является $\varphi$-инвариантным, то $U^\perp$ тоже $\varphi$-инвариантно.
+\end{Suggestion}
+
+\begin{proof}
+	 Посмотрим на матрицу $\varphi$. Поскольку $\mathbb{E} = U \oplus U^\perp$,то легко понять, что матрица линейного оператора будет выглядеть как $\begin{pmatrix}
+		A& 0\\
+		0& B
+	\end{pmatrix}$, где $A$ --- матрица ограничения $\varphi$ на $U$, а $B$ --- на $U^\perp$.
+	
+	\par Пусть $\varphi(U) \subseteq U$. Хотим, чтобы $\varphi(U^\perp) \subseteq U^\perp$. 
+	\[
+		\forall x \in U,\; y \in U^\perp\colon (x,\varphi(y)) = (\varphi^*(x), y) = (\underbrace{\varphi(x)}_{\in U}, y) = 0
+	\]
+\end{proof}
+
+\begin{Suggestion}
+	У самосопряжённого оператора $\varphi$ есть собственный вектор над $\mathbb{R}$. 
+\end{Suggestion}
+
+\begin{proof}
+	Знаем: у $\varphi$ есть одномерное(случай 1) или двумерное (случай 2) инвариантное подпространство.
+	
+\begin{enumerate}
+	\item В случае одномерного инвариантного подпространства всё уже ок, потому что его порождающий вектор уже собственный
+	
+	\item Пусть $U \subseteq \mathbb{E}$ --- двумерное инвариантное подпространство, а $\mathbb{e} = (e_1, e_2)$ --- ортонормированный базис. Пусть $\psi \in L(U)$ --- ограничение $\varphi$ на $U$. В прошлый раз доказывали, что матрица $\psi$ --- симметричная. $A(\psi, \mathbb{e}) = \begin{pmatrix}
+		a& b\\
+		b& c
+	\end{pmatrix}$.
+	Её характеристический многочлен \begin{gather*}
+	\chi_\psi(t) = (-1)^2\begin{vmatrix}
+	a-t& b\\
+	b& c-t
+	\end{vmatrix} = t^2 - (a + c)t + ac - b^2 = 0\\
+	D = (a - c)^2 + 4b^2 \geqslant 0
+	\end{gather*}
+	Значит у $\chi_\psi(t)$ есть корни, а у $\psi$ есть собственный вектор, а значит и у $\varphi$.
+\end{enumerate}
+
+\end{proof}
+
+\begin{Theorem}
+	У всякого самосопряжённого линейного оператора есть ортонормированный базис из собственных векторов. В частности, $\varphi$ диагонализуем над $\mathbb{R}$ и характеристический многочлен разлагается в произведение линейных сомножителей.
+\end{Theorem}
+
+\begin{Consequence}
+	Всякая симметричная подобна диагональной над $\mathbb{R}$.
+\end{Consequence}
+
+\begin{proof}
+	Индукцией по $n$. Для $n = 1$ всё очевидно.
+	\par Если $n > 1$, то у $\varphi$ есть собственный вектор $v$. Положим $e_1 = \cfrac{v}{|v|}$. Положим $U = \langle e_1\rangle^\perp$. Тогда $\dim U = n - 1$.
+	
+	\par $U$ --- $\varphi$-инвариантное подпространство. По предположеню индукции в $U$ есть ортонормированный базис из собственных векторов $(e_2,\ldots, e_n)$. Тогда $(e_1,\ldots, e_n)$ --- искомый базис.
+\end{proof}
+
+\begin{Consequence}
+	Пусть $\varphi = \varphi^*$; $\lambda, \mu$ --- собственные значения. Тогда из того, что $\lambda \neq \mu$, следует, что $V_\lambda(\varphi)\perp V_\mu(\varphi)$.
+\end{Consequence}
+
+\begin{proof}\ 
+	\begin{enumerate} 
+		\item Координатный способ. Пусть $\mathbb{e} = (e_1, \ldots, e_n)$ --- ортонормированный базис из собственных векторов. $x = x_1e_1 + \ldots + x_ne_n\in V_\lambda(\varphi)$, причём $\varphi(e_i) = \lambda_ie_i$.
+		\begin{gather*}
+			\varphi(x) = x_1\lambda_1 e_1 + \ldots x_n \lambda_n e_n\\
+			x \in V_\lambda(\varphi) \Leftrightarrow \varphi(x) = \lambda x \Leftrightarrow x \in \langle e_i\;|\; \lambda_i = \lambda\rangle\\
+			\Rightarrow V_\lambda(\varphi) \perp V_\mu (\varphi),\text{ если } \lambda \neq \mu
+		\end{gather*}
+		\item Бескоординатный способ. 
+		\begin{gather*}
+			x \in V_\lambda(\varphi)\\
+			y \in V_\mu (\varphi)\\
+			\lambda(x,y) = (\lambda x, y) = (\varphi(x), y) = (x, \varphi(y)) = (x, \mu y) = \mu (x, y).
+		\end{gather*}
+		А поскольку $\lambda \neq \mu$, то $(x,y) = 0$.
+	\end{enumerate}
+\end{proof}
+
+\begin{Consequence}[Приведение квадратичной формы к главным осям]
+	Для любой квадратичной формы $Q$ над $\mathbb{E}$ существует ортонормированный базис, в котором $Q$ имеет канонический вид. $Q(x_1, \ldots, x_n) = \lambda_1 x_1^2 + \ldots + \lambda_n x_n^2$.\\
+	\par Числа $\lambda_1, \ldots, \lambda_n$ определены однозначно с точностью до перестановки.
+\end{Consequence}
+
+\begin{proof}
+	Существует единственный самосопряжённый линейный оператор в $\mathbb{E}$ такой, что $Q(v) = (v, \varphi(v))$. Если $\mathbb{e}$ --- ортонормированный базис, то матрица $Q$ в базисе $\mathbb{e}$ будет равна матрице $\varphi$ в базисе $\mathbb{e}$.
+	\par $\lambda_1, \ldots, \lambda_n$ --- собственные значения $\varphi$. 
+\end{proof}
+
+\begin{Consequence}
+	Пусть $A\in M_n(\mathbb{R}), A = A^T$. Тогда существует ортогональная матрица $C$ такая, что $C^TAC = C^{-1} AC = D = \mathrm{diag}(\lambda_1, \ldots, \lambda_n)$
+\end{Consequence}
+
+\subsection{Ортогональные линейные операторы}
+
+\begin{Def}
+	Линейный оператор $\varphi \in L(\mathbb{E})$ называется ортогональным, если $(\varphi(x), \varphi(y)) = (x,y)$. Другими словами, $\varphi$ сохраняет скалярное произведение.
+\end{Def}
+
+\end{document}
