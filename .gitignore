@@ -2,5 +2,8 @@
 *.aux
 *.out
 *.toc
+*.synctex.gz
 
 algorithms/.ropeproject/
+
+*.bcf

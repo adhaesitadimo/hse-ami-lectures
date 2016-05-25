@@ -145,7 +145,7 @@ $\phi(-u) + \phi(u) = \phi(-u+u) = \phi(\vec{0}_V) = \vec{0}_W \Rightarrow \phi(
 \item[$\Rightarrow$] $f(x) = f(x \cdot 1) = xf(1) = kx$, где $k = f(1)$
 \item[$\Leftarrow$] Проверим необходимые условия линейности.
 \begin{enumerate}
-\item $f(x) = kx \Rightarrow f(x_1 + x_2) = k(x_1 + x_2) = kx_1 + kx_2 = kf(x_1) + kf(x_2)$
+\item $f(x) = kx \Rightarrow f(x_1 + x_2) = k(x_1 + x_2) = kx_1 + kx_2 = f(x_1) + f(x_2)$
 \item $f(\alpha x) = k\alpha x = \alpha k x = \alpha f(x)$
 \end{enumerate}
 \end{description}
@@ -261,14 +261,14 @@ w_1, w_2 \in W \Rightarrow \exists v_1, v_2 \in V:
 \begin{description}
 \item[Рефлексивность] $V \simeq V$.
 \item[Симметричность] $V \simeq W \Rightarrow W \simeq V$.
-\item[Транзитивность] $(V \simeq U)\ \&\ (U \simeq W) \Rightarrow V \simeq W$.
+\item[Транзитивность] $(V \simeq U)\ \land\ (U \simeq W) \Rightarrow V \simeq W$.
 \end{description}
 \end{proof}
 
 То есть множество всех векторных пространств над фиксированным полем $F$ разбивается на попарно непересекающиеся классы, причем внутри одного класса любые два пространства изоморфны. Такие классы называются \textit{классами эквивалентности}.
 
 \begin{Theorem}
-Если два конечномерных векторных пространства $V$ и $W$ на полем $F$ изоморфны, то $\dim V = \dim W$.
+Если два конечномерных векторных пространства $V$ и $W$ над полем $F$ изоморфны, то $\dim V = \dim W$.
 \end{Theorem}
 
 Но для начала докажем следующую лемму.

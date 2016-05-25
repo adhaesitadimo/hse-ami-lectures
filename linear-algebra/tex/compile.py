@@ -21,20 +21,18 @@ with open('temp.tex', 'w', encoding="utf8") as temp:
     lectures = []
 
     for elem in os.listdir('./'):
-        if os.path.isfile(os.path.join('./', elem)):
-            if elem.startswith('linear-algebra'):
-                if elem.endswith('.tex'):
-                    lectures.append(elem)
+        if elem.startswith('linear-algebra') and elem.endswith('.tex'):
+            lectures.append(elem)
     lectures.sort()
 
     # Adding it to the temp file
     for lecture_name in lectures:
         with open(lecture_name, 'r', encoding='utf8') as lecture:
+            temp.write(r'\newpage')
             temp_lines = lecture.readlines()
             for line in temp_lines[3:-1]:
                 temp_line = line.replace('section*', 'section')
                 temp.write(temp_line)
-
     # Adding the final line
     temp.write(r'\end{document}')
 
@@ -48,12 +46,17 @@ os.chdir('..')
 for file in os.listdir('./'):
     if file == 'linear-algebra_all_lectures.pdf':
         os.remove(os.path.join('./', file))
-
 os.rename('./tex/temp.pdf', 'linear-algebra_all_lectures.pdf')
+
+for elem in os.listdir('./tex/'):
+    if elem.startswith('linear-algebra') and elem.endswith('.pdf'):
+        if elem in os.listdir('./'):
+            os.remove(os.path.join('./', elem))
+        os.rename('./tex/'+elem, elem)
 os.chdir('tex')
 
 # Removing the litter
-pattern = 'temp*'
 for file in os.listdir('./'):
-    if re.search(pattern, file):
+    if not (file.endswith('.tex') or file.endswith('.py')):
         os.remove(os.path.join('./', file))
+os.remove('./temp.tex')

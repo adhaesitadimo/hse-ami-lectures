@@ -1,4 +1,3 @@
-﻿%% Определение размера листа и шрифта
 \documentclass[a4paper,12pt]{article}
 
 %% Работа с русским языком
@@ -7,6 +6,10 @@
 \usepackage[T2A]{fontenc}			% кодировка
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
 \usepackage[english,russian]{babel}	% локализация и переносы
+
+%% Отступы между абзацами и в начале абзаца 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\medskipamount}
 
 %% Изменяем размер полей
 \usepackage[top=0.5in, bottom=0.75in, left=0.625in, right=0.625in]{geometry}
@@ -17,13 +20,15 @@
 
 %% Различные пакеты для работы с математикой
 \usepackage{mathtools}				% Тот же amsmath, только с некоторыми поправками
+
 \usepackage{amssymb}				% Математические символы
 \usepackage{amsthm}					% Пакет для написания теорем
 \usepackage{amstext}
 \usepackage{array}
 \usepackage{amsfonts}
 \usepackage{icomma}					% "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
-\usepackage{mathbbol}				% Для \mathbb со строчными буквами
+\usepackage{bbm}				    % Для красивого (!) \mathbb с  буквами и цифрами
+\usepackage{enumitem}               % Для выравнивания itemise (\begin{itemize}[align=left])
 
 % Номера формул
 \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
@@ -43,6 +48,7 @@
 {\hbox{$\mathsurround=0pt #1$}}{}}
 
 % Графики
+\usepackage{tikz}
 \usepackage{pgfplots}
 %\pgfplotsset{compat=1.12}
 
@@ -61,7 +67,7 @@
 
 % Информация об авторах
 \author{Группа лектория ФКН ПМИ 2015-2016 \\
-	Ася Иовлева \\
+	Анастасия Иовлева \\
 	Ксюша Закирова \\
 	Руслан Хайдуров}
 \title{Лекции по предмету \\
@@ -80,7 +86,9 @@
 \newtheorem*{Designation}{Обозначение}
 \newtheorem*{Generalization}{Обобщение}
 \newtheorem*{Thedream}{Предел мечтаний}
+\newtheorem*{Properties}{Свойства}
 
+\renewcommand{\mathbb}{\mathbbm}
 \renewcommand{\Re}{\mathrm{Re\:}}
 \renewcommand{\Im}{\mathrm{Im\:}}
 \newcommand{\Arg}{\mathrm{Arg\:}}
@@ -92,3 +100,18 @@
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Ker}{\mathrm{Ker}\:}
 \newcommand{\rk}{\mathrm{rk}\:}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\ort}{\mathrm{ort}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\vol}{\mathrm{vol\:}}
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\newcommand{\e}{\mathbb{e}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+\newcommand{\vvector}[1]{\begin{pmatrix}{#1}_1 \\\vdots\\{#1}_n\end{pmatrix}}
+\renewcommand{\vector}[1]{({#1}_1, \ldots, {#1}_n)}
