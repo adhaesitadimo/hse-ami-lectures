@@ -9,14 +9,14 @@
 
 Вспомним конец прошлой лекции.
 
-Пусть $V$ --- векторное пространство над полем $\mathbb{F}$, $\phi \in L(V)$ --- линейный оператор.
+Пусть $V$ --- векторное пространство над полем $F$, $\phi \in L(V)$ --- линейный оператор.
 
-Вектор $v \in V$ --- корневой для $\phi$, отвечающий собственному значению $\lambda \in \mathbb{F}$ тогда и только тогда, когда существует $m \geqslant 0 $ такое, что $(\phi - \lambda \id)^{m}(v) = 0.$ Высотой корневого вектора называется наименьшее такое $m$.
+Вектор $v \in V$ --- корневой для $\phi$, отвечающий собственному значению $\lambda \in F$ тогда и только тогда, когда существует $m \geqslant 0 $ такое, что $(\phi - \lambda \id)^{m}(v) = 0.$ Высотой корневого вектора называется наименьшее такое $m$.
 
-Корневым подпространством называется пространство из корневых векторов, соответствующих одному значению $\lambda$ и нулевого вектора. Другими словами, $V^{\lambda}(\phi) = \{v \in V \; \vline \; \exists m \geqslant 0 : (\phi - \lambda \id)^{m}(v) = 0\}$. Поскольку собственный вектор является корневым вектором высоты 1, то собственное подпространство включено в корневое подпространство с тем же значением: $V_{\lambda}(\phi) \subseteq V^{\lambda}(\phi).$
+Корневым подпространством называется пространство из корневых векторов, соответствующих одному значению $\lambda$. Другими словами, $V^{\lambda}(\phi) = \{v \in V \; \vline \; \exists m \geqslant 0 : (\phi - \lambda \id)^{m}(v) = 0\}$. Поскольку собственный вектор является корневым вектором высоты 1, то собственное подпространство включено в корневое подпространство с тем же значением: $V_{\lambda}(\phi) \subseteq V^{\lambda}(\phi).$
 
 \begin{Suggestion}
-	Корневое подпространство нетривиально тогда и только тогда, когда $\lambda$ является собственным значением. Другими словами, $V^{\lambda} \neq \{0\} 	
+	Корневое подпространство нетривиально тогда и только тогда, когда $\lambda$ является собственным значением. Другими словами, $V^{\lambda}(\phi) \neq \{0\} 	
 	\Leftrightarrow \chi_{\phi}(\lambda) = 0.$
 \end{Suggestion}
 \begin{proof}\
@@ -33,12 +33,12 @@
 	\end{itemize}
 \end{proof}
 \begin{Suggestion}
-	Для любого собственного значения $\lambda \in \mathbb{F}$ подпространство $V^{\lambda}(\phi)$ инвариантно относительно $\phi$.
+	Для любого собственного значения $\lambda \in F$ подпространство $V^{\lambda}(\phi)$ инвариантно относительно $\phi$.
 \end{Suggestion}
 \begin{proof}
 	Пусть $v$ --- корневой вектор высоты $m$. Докажем, что $\phi(v)$ --- также корневой вектор. 
 	
-	Заметим, что если $u = (\phi - \lambda \id)(v),$ то $u$ --- корневой вектор высоты $m - 1$, и, соответственно, лежит в корневом пространстве:
+	Заметим, что если $u = (\phi - \lambda \id)(v),$ то $u$ --- корневой вектор высоты $m - 1$, и, соответственно, лежит в корневом подпространстве:
 	$$
 	u = (\phi - \lambda \id)(v) = \phi(v) - \lambda{v} \in V^{\lambda}(\phi).
 	$$
@@ -54,7 +54,7 @@
 V_\lambda(\phi) = \ker\phi_\lambda \subset \ker\phi^2_\lambda \subset \ldots \subset \ker\phi^m_\lambda 
 \subset \ldots
 \]
-Причём существует такое $m$, что $\ker\phi^m_\lambda = \ker\phi^{m + 1}_\lambda$, так как $V$ --- конечномерно и размерность его не может уменьшаться бесконечно. Выберем наименьшее такое $m$.
+Причём существует такое $m$, что $\ker\phi^m_\lambda = \ker\phi^{m + 1}_\lambda$, так как $V$ --- конечномерно и размерность его не может увеличиваться бесконечно. Выберем наименьшее такое $m$.
 \begin{Task}
 	Доказать, что для любого $s \geqslant 0$ выполняется равенство $\ker\phi^m_\lambda = \ker\phi^{m + s}_\lambda.$
 \end{Task}
@@ -76,7 +76,7 @@ V_\lambda(\phi) = \ker\phi_\lambda \subset \ker\phi^2_\lambda \subset \ldots \su
 	Напомним, что $k_i = \dim \ker \phi^i_\l$, для $i = 1, \ldots, m$. Пусть также $k_0 = 0$.
 	
 	Выберем базис $\mathbb{e} = (e_1, \ldots, e_{k_m})$ в $V^{\lambda}(\phi)$ так, чтобы
-	$(e_1, \ldots, e_{k_i})$ также был базисом в  $\ker\phi^{i}_\lambda$. Тогда:
+	$(e_1, \ldots, e_{k_i})$ также был базисом в  $\ker\phi^{i}_\lambda$. Тогда матрица ограничения $\phi_\l$ на $V^{\l}(\phi)$ в этом базисе имеет блочный вид:
 	\begin{gather*}
 	A(\limref{\phi_\l}{V^\l(\phi)}, \e) = 
 	\begin{pmatrix}
@@ -86,8 +86,9 @@ V_\lambda(\phi) = \ker\phi_\lambda \subset \ker\phi^2_\lambda \subset \ldots \su
 	  \vdots &\vdots &\vdots & \ddots & \vdots & \vdots\\
 	  0 & 0 & 0 & \ldots & 0 & * \\
 	  0 & 0 & 0 &\ldots & 0 & 0
-	\end{pmatrix}, \quad \text{где } a_{ij} \in \Mat_{(k_i - k_{i - 1}) \times (k_j - k_{j - 1})}
+	\end{pmatrix},
 	\end{gather*}
+	где $(i, j)$-ый блок --- это матрица $\Mat_{(k_i - k_{i - 1}) \times (k_j - k_{j - 1})}$.
 	
 	Но тогда:
 	\begin{gather*}
@@ -149,11 +150,11 @@ V_\lambda(\phi) = \ker\phi_\lambda \subset \ker\phi^2_\lambda \subset \ldots \su
 	\phi(w) - \l w \in V^\l(\phi) \\
 	(\phi - \l\id)(w) \in V^\l(\phi) \Rightarrow w \in V^\l(\phi)
 	\end{gather*}
-	Получили противоречие. Значит, $\l$ --- не корень $(tE - C)$.
+	Получили противоречие. Значит, $\l$ --- не корень $\det(tE - C)$.
 \end{proof}
 
 \begin{Consequence}
-	$V^{\lambda}(\phi) = \ker\phi^s_\lambda$, где $s$ --- кратность $\lambda$ как корня многочлена $\phi_\lambda(t)$.
+	$V^{\lambda}(\phi) = \ker\phi^s_\lambda$, где $s$ --- кратность $\lambda$ как корня многочлена $\chi_\phi(t)$.
 \end{Consequence}
 
 \begin{Suggestion}
@@ -176,26 +177,26 @@ V_\lambda(\phi) = \ker\phi_\lambda \subset \ker\phi^2_\lambda \subset \ldots \su
 	\phi^m_{\lambda_k}(v_1) + \ldots + \phi^m_{\lambda_k}(v_{k-1}) + \phi^m_{\lambda_k}(v_k) = \phi^m_{\lambda_k}(v_1) + \ldots + \phi^m_{\lambda_k}(v_{k-1}) = 0.
 	\]
 	Тогда по предположению индукции $\phi^m_{\lambda_k}(v_1) = \ldots = \phi^m_{\lambda_k}(v_{k-1}) = 0$. Hо
-	$ \limref{\phi_\l}{V^\l(\phi)}$ не вырожден и обратим при $i \neq k$, следовательно $v_1 = \ldots = v_{k-1} = 0$. Но тогда и $v_k = 0$. 
+	$ \limref{\phi_{\l_k}}{V^{\l_i}(\phi)}$ невырожден и, следовательно, обратим при $i \neq k$. Значит, $v_1 = \ldots = v_{k-1} = 0$. Но тогда и $v_k = 0$. 
 	
 	Следовательно, сумма прямая, что нам и требовалось.
 \end{proof}
 
 \begin{Theorem}
-	Если характеристический многочлен $\chi_\phi(t)$ разлагается на линейные множители, причём $\chi_\phi(t) = (t - \lambda_1)^{k_1}\ldots(t - \lambda_s)^{k_s}$, то $V = \bigoplus_{i = 1}^s  \phi^{\lambda_i}(\phi)$.
+	Если характеристический многочлен $\chi_\phi(t)$ разлагается на линейные множители, причём $\chi_\phi(t) = (t - \lambda_1)^{k_1}\ldots(t - \lambda_s)^{k_s}$, то $V = \bigoplus_{i = 1}^s  V^{\lambda_i}(\phi)$.
 \end{Theorem}
 
 \begin{proof}
-	Так как сумма $ \phi^{\lambda_i}(\phi) + \ldots +  \phi^{\lambda_i}(\phi)$ прямая и для любого $i$ выполняется, что $\dim(\phi^{\lambda_i}(\phi)) = k_i$, то: 
+	Так как сумма $ V^{\lambda_1}(\phi) + \ldots +  V^{\lambda_s}(\phi)$ прямая и для любого $i$ выполняется, что $\dim(V^{\lambda_i}(\phi)) = k_i$, то: 
 	$$
-	\dim(\phi^{\lambda_1}(\phi) + \ldots +  \phi^{\lambda_s}(\phi)) = k_1 + \ldots + k_s = \dim{V}.
+	\dim(V^{\lambda_1}(\phi) + \ldots +  V^{\lambda_s}(\phi)) = k_1 + \ldots + k_s = \dim{V}.
 	$$
-	Следовательно, $V = \bigoplus_{i = 1}^s  \phi^{\lambda_i}(\phi)$.
+	Следовательно, $V = \bigoplus_{i = 1}^s  V^{\lambda_i}(\phi)$.
 \end{proof}
 
 \subsection{Жордановы клетки}
 \begin{Def}
-Пусть $\lambda \in \mathbb{F}$. \textbf{Жордановой клеткой} порядка $n$, отвечающей значению $\lambda$, называется матрица вида:
+Пусть $\lambda \in F$. \textbf{Жордановой клеткой} порядка $n$, отвечающей значению $\lambda$, называется матрица вида:
 \begin{gather*}
 J_\l^n = 
 \begin{pmatrix}
@@ -205,7 +206,7 @@ J_\l^n =
 \vdots & \vdots & \vdots & \ddots & \ddots & \vdots \\
 0 & 0 & 0 & \ldots & \l & 1 \\
 0 & 0 & 0 & \ldots & 0 & \l
-\end{pmatrix} \in M_n(\mathbb{F}).
+\end{pmatrix} \in M_n(F).
 \end{gather*}
 \end{Def}
 
