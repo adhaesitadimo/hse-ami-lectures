@@ -1,8 +1,6 @@
 \input{header.tex}
 
 \begin{document}
-\def\limref#1#2{{#1}\negmedspace\mid_{#2}}
-\newcommand{\eps}{\varepsilon}
 
 \section{Лекция 25 от 21.03.2016}
 
@@ -101,35 +99,38 @@ J_{\l_1}^{m_{11}} \\
 \end{pmatrix*}
 \end{gather*}
 
-\item[Шаг 3:] Осталось только заметить, что для каждого $\l_i$ число и порядок жордановых клеток однозначно определено из последовательности чисел:
+\item[Шаг 3:] Осталось только заметить, что для любого $i = 1, \ldots, s$  число и порядок жордановых клеток однозначно определены из последовательности чисел:
 \begin{align*}
-&\dim \ker (\psi_1 - \l_1 \id) \\
-&\dim \ker (\psi_2 - \l_2 \id) ^ 2 \\
+&\dim \ker (\psi_i - \l_i \id) \\
+&\dim \ker (\psi_i - \l_i \id) ^ 2 \\
 &\ldots \\
-&\dim \ker (\psi_i - \l_i \id)^i
+&\dim \ker (\psi_i - \l_i \id)^{k_i}
 \end{align*}
+
 Откуда и следует однозначность представления в виде жордановой нормальной формы (с точностью до перестановки жордановых клеток).
 \end{itemize}
 
 \subsection*{Линейные функции на векторном пространстве}
-Рассмотрим функцию $f \colon \R^n \rightarrow \R$.
+Начнем с примера. Рассмотрим функцию $f \colon \R^n \rightarrow \R$.
 
-Пусть $x_0 \in \R^n$ и $y = \begin{pmatrix}y_1 \\ \vdots \\ y_n\end{pmatrix} \in\R^n$ --- приращение, то есть $x = x_0 + y$. Из этого следует, что
+Пусть $x_0 \in \R^n$ и $y = \begin{pmatrix}y_1 \\ \vdots \\ y_n\end{pmatrix} \in\R^n$ --- приращение, то есть $x = x_0 + y$. Если функция достаточно хорошая, то есть дважды дифференцируема в точке $x$, то
 \begin{gather*}
 f(x) = f(x_0) + a_1y_1 + \ldots + a_ny_n + b_{11}y_1^2 + \ldots + b_{ij}y_iy_j +\ldots + b_{nn}y_n^2 + \overline{o}(|y|^2).
 \end{gather*}
 
-Тогда сумма $a_1y_1 + \ldots + a_ny_n$ будет называться линейной формой, а сумма $b_{11}y_1^2 + \ldots \hm+ b_{ij}y_iy_j + \ldots + b_{nn}y_n^2$ --- квадратичной формой.
+Сумма $a_1y_1 + \ldots + a_ny_n$ называется линейной формой, а сумма $b_{11}y_1^2 + \ldots \hm+ b_{ij}y_iy_j + \ldots + b_{nn}y_n^2$~--- квадратичной формой.
 
 Теперь дадим строгое определение:
 \begin{Def}
-Линейной функцией (формой) на векторном пространстве $V$ называется всякое линейное отображение $\sigma \colon V \rightarrow F$, где $F$ --- одномерное векторное пространство. 
+Линейной функцией (формой, функционалом) на векторном пространстве $V$ называется всякое линейное отображение $\sigma \colon V \rightarrow F$. 
 
 Обозначение: $V^* = \Hom(V, F)$.
 \end{Def}
 
+В этом определении $F$ фактически рассматривается как одномерное векторного пространство.
+
 \begin{Comment}
-Формой принято называть, когда векторное пространство состоит из функций.
+Функционалом принято называть, когда векторное пространство состоит из функций.
 \end{Comment}
 
 \begin{Examples}\
@@ -137,7 +138,7 @@ f(x) = f(x_0) + a_1y_1 + \ldots + a_ny_n + b_{11}y_1^2 + \ldots + b_{ij}y_iy_j +
 \item $\alpha \colon \R^n \rightarrow \R;\ \phi(v) = \langle v, e \rangle$ --- скалярное произведение с некоторым фиксированным $e$.
 \item $\alpha \colon \mathcal{F}(X, F) \rightarrow F;\ \alpha(f) = f(x_0)$. Здесь $\mathcal{F}(X, F) = \{f \colon X \rightarrow F  \}$.
 \item $\alpha \colon C[a, b] \rightarrow \R;\ \alpha(f) = \int_a^b f(x) dx$.
-\item $\alpha \colon \Mat(F) \rightarrow F;\ \alpha(X) = \mathrm{tr}A$.
+\item $\alpha \colon M_n(F) \rightarrow F;\ \alpha(X) = \mathrm{tr}A$.
 \end{enumerate}
 \end{Examples}
 
@@ -145,13 +146,13 @@ f(x) = f(x_0) + a_1y_1 + \ldots + a_ny_n + b_{11}y_1^2 + \ldots + b_{ij}y_iy_j +
 Пространство $V^*$ называется сопряженным (двойственным) к $V$.
 \end{Def}
 
-Пусть $\e = (e_1, \ldots, e_n)$ --- базис $V$, и существует изоморфизм $\alpha \colon V \isom M_{n}$. Тогда \\$\alpha= (\alpha_1, \ldots, \alpha_n)$, где $\alpha_i = \alpha(e_i)$. При этом, если $x = x_1e_1 + \ldots + x_ne_n$, то $\alpha(x) = (\alpha_1, \ldots, \alpha_n)\begin{pmatrix}x_1\\ \vdots \\ x_n\end{pmatrix}$.
+Пусть $\e = (e_1, \ldots, e_n)$ --- базис $V$. Тогда он определяет изоморфизм $\phi \colon V^* \to \Mat_{1\times n}$, \\$\alpha \mapsto (\alpha_1, \ldots, \alpha_n)$, где $\alpha_i = \phi(e_i)$ и $\alpha$ --- линейная функция. При этом, если $x = x_1e_1 + \ldots + x_ne_n$, то $\alpha(x) = (\alpha_1, \ldots, \alpha_n)\begin{pmatrix}x_1\\ \vdots \\ x_n\end{pmatrix}$.
 
 \begin{Consequence}
 $\dim V^* = n$.
 \end{Consequence}
 
-Пусть $\e = (e_1, \ldots, e_n)$ --- базис $V$. Рассмотрим линейные формы $\eps_0, \ldots, \eps_n$ такие, что $\eps_i(e_j) =~\delta_{ij}$, где $\delta_{ij} =
+Пусть $\e = (e_1, \ldots, e_n)$ --- базис $V$. Рассмотрим линейные функции $\eps_1, \ldots, \eps_n$ такие, что $\eps_i(e_j) =~\delta_{ij}$, где $\delta_{ij} =
 \begin{cases}
 1, & i = j \\
 0, & i \neq j
@@ -169,11 +170,11 @@ $(\eps_1, \ldots, \eps_n)$ --- базис в $V^*$.
 \end{proof}
 
 \begin{Def}
-Базис $(\eps_1, \ldots, \eps_n)$ называется сопряженным базисом.
+Базис $(\eps_1, \ldots, \eps_n)$ называется сопряженным к $\e$ базисом.
 \end{Def}
 
 \begin{Task}
-Всякий базис $V^*$ сопряжен с некоторым базисом $V$.
+Всякий базис $V^*$ сопряжен некоторому базису $V$.
 \end{Task}
 
 \subsection*{Билинейные функции на векторном пространстве}

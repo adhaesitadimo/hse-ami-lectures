@@ -6,9 +6,9 @@
 
 \subsection*{Деление многочленов с остатком}
 
-Пусть $F$ --- поле, $\mathbb{F}[x]$ --- множество всех многочленов от переменной $x$ с коэффициентами из $\mathbb{F}$.
+Пусть $F$ --- поле, $F[x]$ --- множество всех многочленов от переменной $x$ с коэффициентами из $F$.
 \begin{Theorem}
-	Пусть $G(x),\ H(x) \in \mathbb{F}[x]$ --- ненулевые многочлены, тогда существует единственная пара $Q(x),\ R(x) \in \mathbb{F}(x)$ такая, что:
+	Пусть $G(x),\ H(x) \in F[x]$ --- ненулевые многочлены, тогда существует единственная пара $Q(x),\ R(x) \in F(x)$ такая, что:
 	\begin{enumerate}
 		\item $G(x) = Q(x)\cdot H(x) + R(x)$;
 		\item $\deg  R(x) < \deg  H(x)$ или $R(x) = 0$.
@@ -16,13 +16,13 @@
 \end{Theorem}
 
 \begin{proof}
-Аналогично делению рациональных чисел с остатком.
+Аналогично делению целых чисел с остатком.
 \end{proof}
 
 Рассмотрим важный частный случай: $H(x) = x - a$. 
 
 \begin{Theorem}[Безу]
-	Если $G(x),\ Q(x) \in \mathbb{F}[x]$ --- ненулевые многочлены, $a \in \mathbb{F}$, то $R = G(a)$ и $G(x) = Q(x)(x - a) + R$.
+	Если $G(x),\ Q(x) \in F[x]$ --- ненулевые многочлены, $a \in F$, то $R = G(a)$ и $G(x) = Q(x)(x - a) + R$.
 \end{Theorem}
 
 \begin{proof}
@@ -35,7 +35,7 @@
 \end{proof}
 
 \begin{Theorem}
-	Многочлен степени $n$ в поле комплексных чисел имеет $n$ комплексных корней.
+	Многочлен степени $n$ в поле комплексных чисел имеет $n$ комплексных корней (с учетом кратности).
 \end{Theorem}
 
 \begin{proof}
@@ -54,7 +54,7 @@ $$
 \subsection*{Собственные значения и характеристический многочлен}
 
 \begin{Def}
-	Пусть $V$ --- конечномерное векторное пространство над полем $\mathbb{F}$. Рассмотрим линейный оператор $\phi: V \to V$. Тогда характеристический многочлен $\phi$ имеет вид:
+	Пусть $V$ --- конечномерное векторное пространство над полем $F$. Рассмотрим линейный оператор $\phi: V \to V$. Тогда характеристический многочлен $\phi$ имеет вид:
 	\begin{gather*}
 	\chi_{\phi}(t) = (-1)^n\det(\phi - tE) = (-1)^n
   \begin{vmatrix}
@@ -74,21 +74,21 @@ $$
         \[c_0 = (-1)^n \det\phi.\]
 \end{Task}
 
-\begin{Statement}
+\begin{Suggestion}
 	$\lambda$ --- собственное значение линейного оператора $\phi$ тогда и только тогда, когда $\chi_\phi(\lambda) = 0$. 
-\end{Statement}
+\end{Suggestion}
 
 \begin{proof}
 	$\lambda$ --- собственное значение $\Leftrightarrow \exists v \neq 0 : \phi(v) = \lambda {v} \Leftrightarrow (\phi - \lambda {E})v = 0 \Leftrightarrow \Ker(\phi - \lambda {E}) \neq \{0\}
 	\Leftrightarrow \det(\phi - \lambda {E}) = 0 \Leftrightarrow \chi_\phi(\lambda) = 0.$
 \end{proof}
 
-\begin{Statement}
-	Если $\mathbb{F} = \mathbb{C}$ и $\dim V > 0$, то любой линейный оператор имеет собственный вектор.
-\end{Statement}
+\begin{Suggestion}
+	Если $F = \mathbb{C}$ и $\dim V > 0$, то любой линейный оператор имеет собственный вектор.
+\end{Suggestion}
 
 \begin{proof}
-	Пусть $\phi: V \to V$ --- линейный оператор. У него существует характеристический многочлен $\chi_\phi(x)$. Тогда по основной теореме алгебры у $\chi_\phi(x)$ есть корень $t_0$ --- собственное значение $\phi$, следовательно существует и собственный вектор $v_0$  с собственным значением $t_0$.
+	Пусть $\phi: V \to V$ --- линейный оператор и $\chi_\phi(t)$ --- его характеристический многочлен. У него есть корень $\lambda$ --- собственное значение $\phi$, следовательно существует и собственный вектор $v$  с собственным значением $\lambda$.
 \end{proof}
 
 \begin{Examples}
@@ -97,14 +97,14 @@ $$
     1& 0
     \end{pmatrix}$
     (поворот на $90^\circ$ градусов против часовой стрелки относительно начала координат) характеристический многочлен имеет вид $\chi_\phi(x) = t^2+1$.
-    \\ При $\mathbb{F}  = \mathbb{R} \Rightarrow$ собственных значений нет.
-    \\ При $\mathbb{F} = \mathbb{C} \Rightarrow$ собственные значения $\pm i$.
+    \\ При $F  = \mathbb{R} \Rightarrow$ собственных значений нет.
+    \\ При $F = \mathbb{C} \Rightarrow$ собственные значения $\pm i$.
 \end{Examples}
 
 \subsection*{Геометрическая и алгебраическая кратности}
 
 \begin{Def}
-	Пусть $\lambda$ --- собственное значение $\phi$, тогда $V_\lambda = \{v \in V \; | \; \phi(v) = \lambda v\}$ --- собственное подпространство, то есть пространство, состоящее из собственных векторов с собственным значением $\lambda$ и нуля.
+	Пусть $\lambda$ --- собственное значение $\phi$, тогда $V_\lambda(\phi) = \{v \in V \; | \; \phi(v) = \lambda v\}$ --- собственное подпространство, то есть пространство, состоящее из собственных векторов с собственным значением $\lambda$ и нуля.
 \end{Def}
 
 \begin{Def}
@@ -115,12 +115,13 @@ $$
 	Если $k$ --- кратность корня характеристического многочлена, то $k$ --- алгебраическая кратность собственного значения.
 \end{Def}
 
-\begin{Statement}
+\begin{Suggestion}
 	Геометрическая кратность не больше алгебраической кратности.
-\end{Statement}
+\end{Suggestion}
 
 \begin{proof}
-	Зафиксируем базис $u_1, \ldots, u_p$ в пространстве $V_\lambda$, где $p = \dim{V_\lambda}$. Дополним базис $u_1, \ldots, u_p$ до базиса $u_1, \ldots, u_p, u_{p+1}, \ldots, u_n$ пространства $V$. Матрица линейного оператора $\phi$ будет выглядеть следующим образом:
+	Зафиксируем базис $u_1, \ldots, u_p$ в пространстве $V_\lambda$, где $p = \dim{V_\lambda}$. Дополним базис $u_1, \ldots, u_p$ до базиса $u_1, \ldots, u_p, u_{p+1}, \ldots, u_n$ пространства $V$. Тогда матрица линейного оператора $\phi$ в 
+	том базисе будет выглядеть следующим образом:
 	\begin{gather*}
 	A_\phi = 
 		\begin{pmatrix*}
@@ -132,8 +133,8 @@ $$
 	\end{gather*}
 	Тогда характеристический многочлен будет следующим:
 	\begin{gather*}
-	\chi_\phi(t) = (-1)^n \det (A_\phi - t) = 
-	\begin{pmatrix}
+	\chi_\phi(t) = (-1)^n \det (A_\phi - tE) = 
+	\begin{vmatrix}
 	\begin{array}{c|c}
 	\begin{matrix}
 	\lambda - t &  & 0 \\
@@ -141,10 +142,10 @@ $$
 	0 &  & \lambda - t
 	\end{matrix}
 	& A \\ \hline
-	0 & b - tE
+	0 & B - tE
 	\end{array}
-	\end{pmatrix}
-	= (-1)^n(\lambda - t)^p\dim(B - tE)
+	\end{vmatrix}
+	= (-1)^n(\lambda - t)^p\det(B - tE)
 	\end{gather*}
 
 	Как видим, $\chi_\phi(t)$ имеет корень кратности хотя бы $p$, следовательно, геометрическая кратность, которая равна $p$ по условию, точно не превосходит алгебраическую.
@@ -163,15 +164,18 @@ $$
 \subsection*{Сумма и прямая сумма нескольких подпространств}
 
 \begin{Def}
-	Пусть $U_1, \ldots, U_k \subseteq V$ --- векторные пространства. Суммой нескольких пространств называется $U_1 + \ldots + U_k = \{u_1 + \ldots + u_k \; | \; u_i \in U_i \}$.
+	Пусть $U_1, \ldots, U_k$ --- подпространства векторного пространства $V$. Суммой нескольких пространств называется 
+	$$
+	U_1 + \ldots + U_k = \{u_1 + \ldots + u_k \; | \; u_i \in U_i \}. \qquad (*)
+	$$
 \end{Def}
 
 \begin{Task}
-	$U_1+\ldots + U_k$ --- подпространство.
+	$U_1+\ldots + U_k$ --- подпространство в $V$.
 \end{Task}
 
 \begin{Def}
-	Сумма пространств называется прямой, если  $\:u_1 + \ldots + u_k = 0$ тогда и только тогда, когда $u_1 = \ldots = u_k = 0$. Обозначение: $U_1 \oplus \ldots \oplus U_k$.
+	Сумма $(*)$ называется прямой, если  из условия $\:u_1 + \ldots + u_k = 0$ следует, что $u_1 = \ldots = u_k = 0$. Обозначение: $U_1 \oplus \ldots \oplus U_k$.
 \end{Def}
 
 \begin{Task}
@@ -197,7 +201,7 @@ $$
 	$$
 	Здесь $e_j^i$ это $j$-ый базисный вектор в $\mathbb{e}_i$, базисе $U_i$. Соответственно, $c_j^i$ это коэффициент перед данным вектором. 
 	
-	Если $\mathbb{e} \neq \mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$, то существует какая-то еще линейная комбинация вектора $v$ через эти же векторы:
+	Если $\mathbb{e} = \mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$ не является базисом, то существует какая-то еще линейная комбинация вектора $v$ через эти же векторы:
 	$$
 		v  = (d^1_1e^1_1 + \ldots + d^1_{s_1}e^1_{s_1}) + \ldots + (d^k_1e^k_1 + \ldots + d^k_{s_k}e^k_{s_k})
 	$$
@@ -216,16 +220,16 @@ $$
 	
 	\item[$(2) \Rightarrow (3)$] Пусть $\mathbb{e} = \mathbb{e}_1 \cup \ldots \cup \mathbb{e}_k$ --- базис $U_1 + \ldots + U_k$. Тогда: 
 	$$
-	\dim(U_1 + \ldots + U_k)  = \dim(\mathbb{e}) = \dim(\mathbb{e_1})+ \ldots + \dim(\mathbb{e_k}) = \dim(U_1) + \ldots + \dim(U_k).
+	\dim(U_1 + \ldots + U_k)  = |\mathbb{e}| = |\mathbb{e_1}|+ \ldots + |\mathbb{e_k}| = \dim(U_1) + \ldots + \dim(U_k).
 	$$
 	
 	\item[$(3) \Rightarrow (2)$] Пусть $\dim(U_1 + \ldots + U_k) = \dim{U_1} + \ldots + \dim{U_k}.$
 	
 	Векторы $\mathbb{e}$ порождают сумму, следовательно, из $\mathbb{e}$ можно выделить базис суммы:
 	$$
-	\dim(U_1 + \ldots + U_k) \leqslant \dim(\mathbb{e}) \leqslant \dim(\mathbb{e_1})+ \ldots + \dim(\mathbb{e_k}) = \dim{U_1} + \ldots + \dim{U_k}.
+	\dim(U_1 + \ldots + U_k) \leqslant |\mathbb{e}| \leqslant |\mathbb{e_1}|+ \ldots + |\mathbb{e_k}| = \dim{U_1} + \ldots + \dim{U_k}.
 	$$
-	Но по условию $\dim(U_1 + \ldots + U_k) = \dim{U_1} + \ldots + \dim{U_k}$. Тогда $\dim(U_1 + \ldots + U_k) = \dim(\mathbb{e})$, и $\mathbb{e}$ это базис $U_1 + \ldots + U_k$.
+	Но по условию $\dim(U_1 + \ldots + U_k) = \dim{U_1} + \ldots + \dim{U_k}$. Тогда $\dim(U_1 + \ldots + U_k) = |\mathbb{e}|$, и $\mathbb{e}$ это базис $U_1 + \ldots + U_k$.
  \end{itemize}
  \end{proof}
  
