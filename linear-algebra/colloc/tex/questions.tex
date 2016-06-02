@@ -536,7 +536,7 @@ z \in W\\
 Пусть также есть базис $e_1', \ldots, e_n'$:
 \begin{align*}
     e_1' &= c_{11}e_1 + c_{21}e_2 + \ldots + c_{n1}e_n\\
-    e_2' &= c_{12}e_2 + c_{22}e_2 + \ldots + c_{n2}e_n\\
+    e_2' &= c_{12}e_1 + c_{22}e_2 + \ldots + c_{n2}e_n\\
     \vdots\\
     e_n' &= c_{1n}e_1 + c_{2n}e_2 + \ldots + c_{nn}e_n
 \end{align*}
@@ -549,7 +549,7 @@ $e_1', \ldots, e_n'$ образуют базис тогда и только то
 \begin{itemize}
 \item[{$[\Rightarrow]$}] $e_1', \ldots, e_n'$ --- базис, а значит $\exists C' \in M_n \colon$
 \begin{gather*}
-\left(e_1, \ldots, e_n\right) = \left(e_1', \ldots, e_n'\right)C' = \left(e_1, \ldots, e_n\right)C'C\\
+\left(e_1, \ldots, e_n\right) = \left(e_1', \ldots, e_n'\right)C' = \left(e_1, \ldots, e_n\right)CC'\\
 E = CC'\\
 C' = C^{-1} \Leftrightarrow \exists C^{-1} \Leftrightarrow \det{C} \neq 0
 \end{gather*}
